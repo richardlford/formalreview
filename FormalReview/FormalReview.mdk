@@ -1,0 +1,154 @@
+<!--madoko
+Title       : Formal Methods Review
+Title Note  : Manuscript Formal Methods Review&br;&date; &time;
+Author      : Richard L. Ford
+Email       : richardlford@gmail.com
+Doc Class   : [12pt,twoside]article
+Package     : [left=1.0in, right=0.75in]geometry
+Heading Base: 2
+Toc Depth   : 5
+Heading Depth: 5
+xMath Mode   : dynamic
+
+xBibliography: DafnyRef.bib
+xBibliography: references.bib
+xBibliography: paper-full.bib
+xBibliography: poc.bib
+xBibliography: krml250.bib
+Bibliography: FormalReview.bib
+Cite All:     true 
+Csl Style: apa
+
+[INCLUDE=zero]
+Tex Header  : \setcounter{footnote}{-1}
+xPackage     : times
+xTex Header  : \IfFileExists{luximono.sty}{\usepackage[scaled=0.81]{luximono}}{\usepackage[scaled=0.81]{beramono}}
+Colorizer: dafny
+Colorizer: dafnyx
+~Pre,.code1 : replace="//\\forall\s/\(&forall;[&thinsp;]{font-family=serif}\)\
+                       //\bexists\s/\(&exist;[&thinsp;]{font-family=serif}\)\
+                       //g"
+              language=dafnyx
+              font-size=small
+~Pre        : margin-left=1em
+
+~Exercise   : .block @Exercise=arabic0 label='[@Exercise]{.Exercise-label}'
+              before='[**Exercise\ &label;.** ]{.Exercise-before}'
+	            after=' &box;'
+
+Comment     : We use four backticks (````) for grammar productions. We use the Java
+              colorizer as that seems good enough for grammars.
+Colorizer   : java
+
+.pre-fenced4: language=java .grammar-def
+.code2      : language=java .grammar-ref
+
+.grammar-def: replace='//(^|\n)([A-Z]\w+)/\1\([\2]{#1_\L\2\E .ntdef}\)\
+                       //(^|\n)([a-z]\w+)/\1\([\2]{#2_\L\2\E .ntdef}\)\
+                       //\/\/.*/\0\
+                       //\/\*[\s\S]*?\*\//\0\
+                       //"([^"|\s]*)"/\([\"\1\"]{.terminal}\)\
+                       //([^\[\(\{\w#.&])([A-Z]\w+)\b/\1\([\2](#1_\L\2\E){.ntref}\)\
+                       //([^\[\(\{\w#.&])([a-z]\w+)\b/\1\([\2](#2_\L\2\E){.ntref}\)\
+                       //cg'    
+
+.grammar-ref: replace='//\/\/.*/\0\
+                       //\/\*[\s\S]*?\*\//\0\
+                       //"([^"\s]*)"/\([\"\1\"]{.terminal}\)\
+                       //([^\[\(\{\w#.&])([A-Z]\w+)\b/\1\([\2](#1_\L\2\E){.ntref}\)\
+                       //([^\[\(\{\w#.&])([a-z]\w+)\b/\1\([\2](#2_\L\2\E){.ntref}\)\
+                       //^([A-Z]\w+)$/\([\1](#1_\L\1\E){.ntref}\)\
+                       //^([a-z]\w+)$/\([\1](#2_\L\1\E){.ntref}\)\
+                       //cg'    
+.terminal   : font-weight=bold color=black                       
+.ntref      : color=maroon
+.ntdef      : color=olive
+
+.AuthorNote : before="**&author;: **"
+~Daan       : .AuthorNote color=purple author="Daan"
+~Rich       : .AuthorNote color=teal author="Rich"
+
+.grammar    : .framed padding=1ex margin-left=0ex language=java
+
+Css Header  : body { text-rendering=optimizeLegibility }
+
+
+<style>
+.code-escaped .comment-color { color: darkgreen }
+
+.token.java.string     { color: black; font-weight: bold }
+.token.java.type       { color: black; font-weight: normal }
+.token.java.operator,
+.token.java.delimiter  { color: blue; }
+</style>
+
+~ MathDefs
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Equal}{\;\;\;=\;\;\;}
+\newcommand{\Equiv}{\;\;\equiv\;\;}
+\newcommand{\ES}{\;\;}
+\newcommand{\ite}[3]{\textrm{if}\ES #1 \ES\textrm{then}\ES #2 \ES\textrm{else}\ES #3}
+\newcommand{\Less}{\ll}
+\newcommand{\Imp}{\;\Longrightarrow\;}
+\renewcommand{\And}{\;\wedge\;}
+\newcommand{\Or}{\;\vee\;}
+\newcommand{\FBelow}{\ES\dot{\Rightarrow}\ES}
+\newcommand{\least}{^{\downarrow}}
+\newcommand{\greatest}{^{\uparrow}}
+\newcommand{\Dfrac}[2]{%
+  \ooalign{%
+    $\genfrac{}{}{1.8pt}0{#1}{#2}$\cr%
+    $\color{white}\genfrac{}{}{1pt}0{\phantom{#1}}{\phantom{#2}}$}%
+}
+\newcommand{\DfracA}[2]{%
+  \ooalign{%
+    $\genfrac{}{}{1.2pt}0{#1}{#2}$\cr%
+    $\color{white}\genfrac{}{}{0.6pt}0{\phantom{#1}}{\phantom{#2}}$}%
+}
+\newcommand{\false}{\mathit{false}}
+\newcommand{\true}{\mathit{true}}
+\newcommand{\fib}{\mathit{fib}}
+\newcommand{\PDownward}{\mathit{PDownward}}
+\newcommand{\iterX}[1]{\hat{#1}}
+\newcommand{\IterX}[1]{\check{#1}}
+\renewcommand\vec[1]{\overrightarrow{#1}}
+\newcommand\cev[1]{\overleftarrow{#1}}
+\newcommand{\iterY}[1]{\vec{#1}}
+\newcommand{\IterY}[1]{\cev{#1}}
+\newcommand{\iter}[1]{{{}^{\flat}\!#1}}
+\newcommand{\Iter}[1]{{{}^{\sharp}\!#1}}
+
+% daan's fractions
+\newcommand\xstrut{\vrule height 9.4pt depth 4.6pt width 0pt\relax}
+\newcommand\xupstrut{\vrule height 9.4pt depth 0pt width 0pt\relax}
+         
+\renewcommand{\Dfrac}[2]{%
+  \ooalign{%
+    % first a thick fraction line
+    $\genfrac{}{}{1.4pt}1{\displaystyle #1\strut}{\displaystyle #2\strut}$\cr%
+    % and then a thinner white fraction line on top of it 
+    $\color{white}\genfrac{}{}{0.6pt}1{\phantom{\displaystyle #1\strut}}{\phantom{\displaystyle #2\strut}}$}%
+}
+\renewcommand{\dfrac}[2]{%
+   \displaystyle\genfrac{}{}{0.4pt}1{\displaystyle #1}{\displaystyle #2}%
+}
+~
+
+-->
+
+[TITLE]
+
+~ Abstract
+This is a review of current formal methods theory, tools, projects and people.
+~
+
+[TOC]
+
+
+# Introduction
+
+Bi-Abduction is define in [@calcagno_compositional_2011].
+
+# References
+[BIB]
+
