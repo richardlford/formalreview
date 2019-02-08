@@ -36,7 +36,7 @@ Colorizer: dafnyx
               before='[**Exercise\ &label;.** ]{.Exercise-before}'
 	            after=' &box;'
 
-Comment     : We use four backticks (````) for grammar productions. We use the Java
+Comment     : We use four backticks (````) for grammar productions. We use $t$he Java
               colorizer as that seems good enough for grammars.
 Colorizer   : java
 
@@ -269,7 +269,7 @@ theorems and inference rules without compromising its soundness."
 ## Frama-C
 - Home Page :: https://frama-c.com/
 
-## F#
+## F*
 - Home Page :: https://www.fstar-lang.org/
 - Source :: http://github.com/FStarLang/FStar
 
@@ -482,7 +482,7 @@ built using the Coq interactive theorem prover. It includes multiple
 operational semantics and proves relations among them to facilitate
 different reasoning styles and proof techniques.
 
-Latest Results
+#### Latest Results
 
 During the first year of DeepSpec we
 
@@ -506,7 +506,7 @@ elliptic curve operations with fiat-crypto at MIT) and protocols
 (verified with the Foundational Cryptography Framework and connected
 to results about C and assembly programs)."
 
-#Latest Results#:
+##### Latest Results:
 
 Fiat Cryptography is now used in Google's BoringSSL library for
 elliptic-curve arithmetic.  As a result, Chrome HTTPS connections now
