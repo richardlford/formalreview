@@ -252,7 +252,7 @@ arithmetic, basic set theory and real analysis) to save the user
 work. It is also fully programmable, so users can extend it with new
 theorems and inference rules without compromising its soundness."
 
-## Daphny
+## Dafny
 - Home Page :: https://www.microsoft.com/en-us/research/project/dafny-a-language-and-program-verifier-for-functional-correctness/
 - Source :: https://github.com/Microsoft/dafny
 - Tutorial :: https://rise4fun.com/dafny
