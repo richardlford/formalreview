@@ -1,6 +1,6 @@
 <!--madoko
 Title       : Formal Methods Review
-Title Note  : Manuscript Formal Methods Review&br;&date; &time;
+Title Note  : &date; &time;
 Author      : Richard L. Ford
 Email       : richardlford@gmail.com
 Doc Class   : [12pt,twoside]article
@@ -369,7 +369,7 @@ procedures using a rich programming model and in a typeful
 manner. This limits the scalability of the proof development process,
 as users avoid developing domain-specific tactics and decision
 procedures.
-
+¯˘
 In this paper, we present VeriML---a novel language design that
 couples a type-safe effectful computational language with first-class
 support for manipulating logical terms such as propositions and
@@ -452,14 +452,6 @@ it poses for using VST and CertiKOS together."
 #### GNU Libmicrohttpd
 - Home Page :: <https://www.gnu.org/software/libmicrohttpd/>
 - Source :: <https://gnunet.org/git/libmicrohttpd.git>
-
-### Kami
-- Home Page :: <http://plv.csail.mit.edu/kami/>
-- Source :: <https://github.com/mit-plv/kami.git>
-
-A Coq framework to support implementing, specifying, verifying, and
-compiling Bluespec-style hardware components with high developer
-productivity.
 
 ### Verdi
 - Home Page :: <http://verdi.uwplse.org/>
@@ -563,8 +555,6 @@ equivalent OCaml program that can be compiled and run as normal."
 
 Narcissus is part of the fiat project to derive
 Correct-By-Construction Decoders and Encoders from Binary Formats.
-
-### Bedrock
 
 ### Bedrock2
 - Source :: 
