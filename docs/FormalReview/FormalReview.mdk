@@ -253,12 +253,12 @@ work. It is also fully programmable, so users can extend it with new
 theorems and inference rules without compromising its soundness."
 
 ## Dafny
-- Home Page :: <https://www.microsoft.com/en-us/research/project/dafny-a-language-and-program-verifier-for-functional-correctness/>
+- Home Page :: [Dafny](https://www.microsoft.com/en-us/research/project/dafny-a-language-and-program-verifier-for-functional-correctness)
 - Source :: <https://github.com/Microsoft/dafny>
 - Tutorial :: <https://rise4fun.com/dafny>
 
 ## Boogie
-- Home Page :: <https://www.microsoft.com/en-us/research/project/boogie-an-intermediate-verification-language/>
+- Home Page :: [Boogie](https://www.microsoft.com/en-us/research/project/boogie-an-intermediate-verification-language)
 - Source :: <https://github.com/boogie-org/boogie>
 - Documentation :: <https://boogie-docs.readthedocs.io/en/latest/>
 - Online trial :: <https://rise4fun.com/Boogie>
@@ -274,14 +274,13 @@ theorems and inference rules without compromising its soundness."
 - Source :: <http://github.com/FStarLang/FStar>
 
 - Papers:
-  - <https://www.fstar-lang.org/tutorial/>
+  - [F* Tutorial](https://www.fstar-lang.org/tutorial/)
 
 ## LEAN
 
 
 - Papers:
-  - A Metaprogramming Framework for Formal Verification
-    <https://pp.ipd.kit.edu/uploads/publikationen/ebner17meta.pdf>
+  - [A Metaprogramming Framework for Formal Verification](https://pp.ipd.kit.edu/uploads/publikationen/ebner17meta.pdf)
 
 # Formal Methods Projects
 
@@ -515,15 +514,10 @@ libraries.
 - Home Page :: ?
 - Source :: <https://github.com/PrincetonUniversity/DeepSpecDB>
 - Papers:
-  - VST Verification of B+Trees with Cursors
-    <http://perso.eleves.ens-rennes.fr/people/Aurele.Barriere/papers/vstbtrees.pdf>
-  - Implementing a high-performance key-value store using a trie of
-    B+-Trees with cursors.
-    <https://github.com/PrincetonUniversity/DeepSpecDB/blob/master/papers/adewale/Masters_Thesis.pdf>
-  - Project Report on DeepSpecDB
-    <https://github.com/PrincetonUniversity/DeepSpecDB/blob/master/papers/luke/report.pdf>
-  - The Theory and Verification of B+Tree Cursor Relations
-    <https://github.com/PrincetonUniversity/DeepSpecDB/blob/master/papers/mcswiggen/McSwiggen-Thesis.pdf>
+  - [VST Verification of B+Trees with Cursors](http://perso.eleves.ens-rennes.fr/people/Aurele.Barriere/papers/vstbtrees.pdf)
+  - [Implementing a high-performance key-value store using a trie of B+-Trees with cursors](https://github.com/PrincetonUniversity/DeepSpecDB/blob/master/papers/adewale/Masters_Thesis.pdf)
+  - [Project Report on DeepSpecDB](https://github.com/PrincetonUniversity/DeepSpecDB/blob/master/papers/luke/report.pdf)
+  - [The Theory and Verification of B+Tree Cursor Relations](https://github.com/PrincetonUniversity/DeepSpecDB/blob/master/papers/mcswiggen/McSwiggen-Thesis.pdf)
 
 ### Fiat
 - Home Page :: <http://plv.csail.mit.edu/fiat/>
@@ -676,7 +670,7 @@ of "Definitions". Some projects are broken up by component.
 
 |----------------+------------+--------+--------+-------+------+-----------------------------------------------------------------|
 | Project        | #Coq Files |   SLOC | Proofs | Types | Defs | Notes                                                           |
-|----------------+------------+--------+--------+-------+------+-----------------------------------------------------------------|
+|----------------+{width:5em}:+-------:+-------:+------:+-----:+-{width:5cm}-----------------------------------------------------|
 | certikos       |            |        |        |       |      | Kit Operating System                                            |
 | - compcert     |        205 | 206270 |   5359 |   465 | 2945 | Modified compcert                                               |
 | - compcertx    |         50 |   8645 |    326 |    25 |   60 | Compcert for sep compilation                                    |
