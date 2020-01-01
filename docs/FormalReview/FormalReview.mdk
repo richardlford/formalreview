@@ -163,7 +163,7 @@ incomplete.
 ## Yale FLINT Group
 - Home Page :: <http://flint.cs.yale.edu/flint/>
 - Publications:
-  - <https://www.cs.purdue.edu/homes/suresh/590s-Fall2002/papers/Flintoverview.pdf>
+  - <http://flint.cs.yale.edu/flint>
 
 "The FLINT group at Yale aims to develop a novel and practical
 programming infrastructure for constructing large-scale certified
@@ -397,7 +397,7 @@ Developed by the FLINT group.
 
 Kami is a library that turns Coq into an IDE for digital hardware
 development, based on a clean-slate reimplementation of a core of the
-[[http://www.bluespec.com/][Bluespec]] language. We span the gap from mathematical specifications to
+[Bluespec](http://www.bluespec.com) language. We span the gap from mathematical specifications to
 hardware circuit descriptions (RTL netlists). We support specifying,
 implementing, verifying, and compiling hardware, reasoning at a high
 level about particular hardware components but in the end deriving
@@ -598,7 +598,7 @@ This is used as the first stage of CertiCoq.
 ### QuickChick
 - Home Page :: <https://deepspec.org/entry/Project/QuickChick>
 - Source :: <https://github.com/QuickChick>
-- Book :: [[https://softwarefoundations.cis.upenn.edu/qc-current/][QuickChick: Property-Based Testing in Coq]]
+- Book :: [QuickChick: Property-Based Testing in Coq](https://softwarefoundations.cis.upenn.edu/qc-current)
 
 - Randomized property-based testing plugin for Coq; a clone of Haskell QuickCheck
 - Includes a foundational verification framework for testing code
@@ -674,7 +674,7 @@ Alphabetically by last name, then first.
 - Home Page :: <http://www.cis.upenn.edu/~bcpierce/>
 - LinkedIn :: <https://github.com/bcpierce00>
 Professor Department of Computer and Information Science University of Pennsylvania.
-Author of [[http://www.cis.upenn.edu/~bcpierce/sf][Software Foundations]].
+Author of [Software Foundations](http://www.cis.upenn.edu/~bcpierce/sf).
 
 ## Zhong Shao
 - Home Page :: <http://cs-www.cs.yale.edu/homes/shao/>
