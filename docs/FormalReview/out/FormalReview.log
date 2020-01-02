@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.1.17)  1 JAN 2020 18:51
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.1.17)  2 JAN 2020 15:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -910,165 +910,178 @@ Overfull \hbox (8.35352pt too wide) in paragraph at lines 1311--1312
  []
 
 [14] [15]
-Overfull \hbox (10.3852pt too wide) in paragraph at lines 1465--1523
-[] 
+Overfull \hbox (19.00594pt too wide) in alignment at lines 1469--1493
+ [] [] [] [] [] [] [] 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 1493
+ []
 
-[16]
-Overfull \vbox (138.08295pt too high) has occurred while \output is active []
 
-[17]
-Underfull \hbox (badness 2293) in paragraph at lines 1556--1557
+Overfull \hbox (19.00594pt too wide) in alignment at lines 1493--1515
+ [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (19.00594pt too wide) in alignment at lines 1515--1537
+ [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (19.00594pt too wide) in alignment at lines 1537--1538
+ [] [] [] [] [] [] [] 
+ []
+
+[16] [17]
+Underfull \hbox (badness 2293) in paragraph at lines 1572--1573
 []| | []| \TU/lmr/m/n/12 Altenkirch, T., Capriotti, P., Dijkstra, G., Kraus, N., & Forsberg, F. N. (2018).
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1556--1557
+Underfull \hbox (badness 10000) in paragraph at lines 1572--1573
 \TU/lmr/m/n/12 Quotient inductive-inductive types. \TU/lmr/m/it/12 arXiv:1612.02346 [cs]\TU/lmr/m/n/12 , \TU/lmr/m/it/12 10803\TU/lmr/m/n/12 , 293–310.
  []
 
 [18]
-Underfull \hbox (badness 2142) in paragraph at lines 1592--1593
+Underfull \hbox (badness 2142) in paragraph at lines 1608--1609
 []| | []| \TU/lmr/m/n/12 Appel, A. W., Dockins, R., Hobor, A., Beringer, L., Dodds, J., Stewart, G., …
  []
 
 
-Underfull \hbox (badness 1546) in paragraph at lines 1595--1596
+Underfull \hbox (badness 1546) in paragraph at lines 1611--1612
 []| | []| \TU/lmr/m/n/12 Arias, E. J. G., Pin, B., & Jouvelot, P. (2017). jsCoq: Towards Hybrid Theorem
  []
 
 [19]
-Underfull \hbox (badness 1496) in paragraph at lines 1613--1614
+Underfull \hbox (badness 1496) in paragraph at lines 1629--1630
 []| | []| \TU/lmr/m/n/12 Bedford, A. (2017). Coqatoo: Generating Natural Language Versions of Coq Proofs.
  []
 
 Missing character: There is no   in font [lmroman12-regular]:mapping=tex-text;!
 [20] [21]
-Underfull \hbox (badness 2818) in paragraph at lines 1682--1683
+Underfull \hbox (badness 2818) in paragraph at lines 1698--1699
 []| | []| \TU/lmr/m/n/12 Calcagno, C., Distefano, D., O’Hearn, P. W., & Yang, H. (2011). Compositional
  []
 
 
-Underfull \hbox (badness 4479) in paragraph at lines 1682--1683
+Underfull \hbox (badness 4479) in paragraph at lines 1698--1699
 \TU/lmr/m/n/12 Shape Analysis by Means of Bi-Abduction. \TU/lmr/m/it/12 Journal of the ACM\TU/lmr/m/n/12 , \TU/lmr/m/it/12 58\TU/lmr/m/n/12 (6), 1–66.
  []
 
-[22] [23] [24]
-Underfull \hbox (badness 1314) in paragraph at lines 1799--1800
+[22] [23] [24] [25]
+Underfull \hbox (badness 1314) in paragraph at lines 1815--1816
 \TU/lmr/m/n/12 ary 1, 2019, from [][]\TU/lmtt/m/n/12 http:// galileo. phys. virginia. edu/ classes/ 152. mf1i. spring02/
  []
 
-[25]
-Underfull \hbox (badness 1043) in paragraph at lines 1814--1815
+
+Underfull \hbox (badness 1043) in paragraph at lines 1830--1831
 \TU/lmr/m/n/12 Proof Automation Less Ad Hoc. In \TU/lmr/m/it/12 Proceedings of the 16th ACM SIGPLAN Inter-
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 1817--1818
+Underfull \hbox (badness 1158) in paragraph at lines 1833--1834
 []| | []| \TU/lmr/m/n/12 Gorogiannis, N., O’Hearn, P. W., & Sergey, I. (2019). A true positives theorem for
  []
 
 [26]
-Underfull \hbox (badness 1122) in paragraph at lines 1841--1842
+Underfull \hbox (badness 1122) in paragraph at lines 1857--1858
 []| | []| \TU/lmr/m/n/12 Hatcliff, J., Leavens, G. T., Leino, K. R. M., Müller, P., & Parkinson, M. (2012).
  []
 
 
-Underfull \hbox (badness 5787) in paragraph at lines 1856--1857
+Underfull \hbox (badness 5787) in paragraph at lines 1872--1873
 []| | []| \TU/lmr/m/n/12 Herlihy, M. P., & Wing, J. M. (1990). Linearizability: A Correctness Condi-
  []
 
 
-Underfull \hbox (badness 2865) in paragraph at lines 1856--1857
+Underfull \hbox (badness 2865) in paragraph at lines 1872--1873
 \TU/lmr/m/n/12 tion for Concurrent Objects. \TU/lmr/m/it/12 ACM Trans. Program. Lang. Syst.\TU/lmr/m/n/12 , \TU/lmr/m/it/12 12\TU/lmr/m/n/12 (3), 463–492.
  []
 
-
-Underfull \hbox (badness 1365) in paragraph at lines 1859--1860
+[27]
+Underfull \hbox (badness 1365) in paragraph at lines 1875--1876
 []| | []| \TU/lmr/m/n/12 Hobor, A., Dockins, R., & Appel, A. W. (2010). A Theory of Indirection via Ap-
  []
 
 
-Underfull \hbox (badness 2635) in paragraph at lines 1859--1860
+Underfull \hbox (badness 2635) in paragraph at lines 1875--1876
 \TU/lmr/m/n/12 proximation. In \TU/lmr/m/it/12 Proceedings of the 37th Annual ACM SIGPLAN-SIGACT Sympo-
  []
 
-[27]
-Underfull \hbox (badness 1314) in paragraph at lines 1865--1866
+
+Underfull \hbox (badness 1314) in paragraph at lines 1881--1882
 []| | []| \TU/lmr/m/n/12 Hriţcu, C. (2015). Micro-Policies: Formally Verified, Tag-Based Security Monitors. In
  []
 
 
-Underfull \hbox (badness 4205) in paragraph at lines 1865--1866
+Underfull \hbox (badness 4205) in paragraph at lines 1881--1882
 \TU/lmr/m/it/12 Proceedings of the 10th ACM Workshop on Programming Languages and Anal-
  []
 
 
-Underfull \hbox (badness 3942) in paragraph at lines 1865--1866
+Underfull \hbox (badness 3942) in paragraph at lines 1881--1882
 \TU/lmr/m/it/12 ysis for Security - PLAS’15 \TU/lmr/m/n/12 (pp. 1–1). Prague, Czech Republic: ACM Press.
  []
 
 [28]
-Underfull \hbox (badness 2310) in paragraph at lines 1919--1920
+Underfull \hbox (badness 2310) in paragraph at lines 1935--1936
 []| | []| \TU/lmr/m/n/12 Klein Gerwin, Andronick June, Keller Gabriele, Matichuk Daniel, Murray Toby, &
  []
 
 
-Underfull \hbox (badness 1163) in paragraph at lines 1922--1923
+Underfull \hbox (badness 1163) in paragraph at lines 1938--1939
 \TU/lmr/m/n/12 trieved from [][]\TU/lmtt/m/n/12 https:// www. microsoft. com/ en- us/ research/ publication/ programming-
  []
 
 
-Underfull \hbox (badness 7963) in paragraph at lines 1928--1929
+Underfull \hbox (badness 7963) in paragraph at lines 1944--1945
 []| | []| \TU/lmr/m/n/12 Krishnan, R., & Lalithambika, V. R. (2018). Modelling and validating 1553B
  []
 
 
-Underfull \hbox (badness 4832) in paragraph at lines 1928--1929
+Underfull \hbox (badness 4832) in paragraph at lines 1944--1945
 \TU/lmr/m/n/12 protocol using the SPIN model checker. In \TU/lmr/m/it/12 2018 10th International Conference
  []
 
 
-Underfull \hbox (badness 3333) in paragraph at lines 1928--1929
+Underfull \hbox (badness 3333) in paragraph at lines 1944--1945
 \TU/lmr/m/it/12 on Communication Systems & Networks (COMSNETS) \TU/lmr/m/n/12 (pp. 472–475). Bengaluru:
  []
 
 [29]
-Underfull \hbox (badness 1448) in paragraph at lines 1958--1959
+Underfull \hbox (badness 1448) in paragraph at lines 1974--1975
 \TU/lmr/m/n/12 from [][]\TU/lmtt/m/n/12 https:// www. microsoft. com/ en- us/ research/ publication/ compiling- hilberts-
  []
 
-
-Underfull \hbox (badness 1210) in paragraph at lines 1964--1965
+[30]
+Underfull \hbox (badness 1210) in paragraph at lines 1980--1981
 \TU/lmr/m/n/12 in a Program Verifier. Retrieved from [][]\TU/lmtt/m/n/12 https:// www. microsoft. com/ en- us/ research/
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1964--1965
+Underfull \hbox (badness 10000) in paragraph at lines 1980--1981
 \TU/lmtt/m/n/12 publication/ co- induction- simply- automatic- co- inductive- proofs- in- a- program-
  []
 
-[30]
-Underfull \hbox (badness 2126) in paragraph at lines 1976--1977
+
+Underfull \hbox (badness 2126) in paragraph at lines 1992--1993
 []| | []| \TU/lmr/m/n/12 Leino, R., & Yessenov, K. (2016). Stepwise Refinement of Heap-Manipulating Code
  []
 
 Missing character: There is no   in font [lmroman12-regular]:mapping=tex-text;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 1982--1983
+Underfull \hbox (badness 10000) in paragraph at lines 1998--1999
 \TU/lmtt/m/n/12 publication/ 280790704_ Certified_ functional_ programming_ Program_ extraction_
  []
 
 
-Underfull \hbox (badness 1275) in paragraph at lines 1991--1992
+Underfull \hbox (badness 1275) in paragraph at lines 2007--2008
 []| | []| \TU/lmr/m/n/12 Martin-Dorel, É., & Melquiond, G. (2016). Proving Tight Bounds on Univariate Ex-
  []
 
 
-Underfull \hbox (badness 1852) in paragraph at lines 1991--1992
+Underfull \hbox (badness 1852) in paragraph at lines 2007--2008
 \TU/lmr/m/n/12 pressions with Elementary Functions in Coq. \TU/lmr/m/it/12 J Autom Reasoning\TU/lmr/m/n/12 , \TU/lmr/m/it/12 57\TU/lmr/m/n/12 (3), 187–217.
  []
 
@@ -1076,65 +1089,65 @@ Missing character: There is no   in font [lmroman12-italic]:mapping=tex-text;!
 Missing character: There is no   in font [lmroman12-italic]:mapping=tex-text;!
 Missing character: There is no   in font [lmroman12-italic]:mapping=tex-text;!
 [31]
-Underfull \hbox (badness 1881) in paragraph at lines 2009--2010
+Underfull \hbox (badness 1881) in paragraph at lines 2025--2026
 []| | []| \TU/lmr/m/n/12 Monniaux, D. (2005). The parallel implementation of the Astr\’{e}e static analyzer.
  []
 
 
-Underfull \hbox (badness 3536) in paragraph at lines 2024--2025
+Underfull \hbox (badness 3536) in paragraph at lines 2040--2041
 []| | []| \TU/lmr/m/n/12 O’Hearn, P. (2019). Separation logic. \TU/lmr/m/it/12 Communications of the ACM\TU/lmr/m/n/12 , \TU/lmr/m/it/12 62\TU/lmr/m/n/12 (2), 86–95.
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 2048--2049
+Underfull \hbox (badness 10000) in paragraph at lines 2064--2065
 \TU/lmtt/m/n/12 sigplan. org/ event/ prisc- 2018- on- compositional- compiler- correctness- and- fully-
  []
 
 [33]
-Underfull \hbox (badness 5832) in paragraph at lines 2102--2103
+Underfull \hbox (badness 5832) in paragraph at lines 2118--2119
 []| | []| \TU/lmr/m/n/12 Ramsey, N., & Dias, J. (2006). An Applicative Control-Flow Graph Based on
  []
 
 
-Underfull \hbox (badness 1924) in paragraph at lines 2102--2103
+Underfull \hbox (badness 1924) in paragraph at lines 2118--2119
 \TU/lmr/m/n/12 Huet’s Zipper. \TU/lmr/m/it/12 Electronic Notes in Theoretical Computer Science\TU/lmr/m/n/12 , \TU/lmr/m/it/12 148\TU/lmr/m/n/12 (2), 105–126.
  []
 
 [34]
-Underfull \hbox (badness 10000) in paragraph at lines 2132--2133
+Underfull \hbox (badness 10000) in paragraph at lines 2148--2149
 \TU/lmtt/m/n/12 en- us/ research/ project/ project- everest- verified- secure- implementations- https-
  []
 
 [35]
-Underfull \hbox (badness 10000) in paragraph at lines 2162--2163
+Underfull \hbox (badness 10000) in paragraph at lines 2178--2179
 \TU/lmtt/m/n/12 en. wikipedia. org/ w/ index. php? title= Category:Formal_ methods_ people& oldid=
  []
 
 
-Underfull \hbox (badness 2073) in paragraph at lines 2165--2166
+Underfull \hbox (badness 2073) in paragraph at lines 2181--2182
 []| | []| \TU/lmr/m/n/12 Yang, J., & Hawblitzel, C. (2011). Safe to the last instruction: automated verifi-
  []
 
 
-Underfull \hbox (badness 1558) in paragraph at lines 2165--2166
+Underfull \hbox (badness 1558) in paragraph at lines 2181--2182
 \TU/lmr/m/n/12 cation of a type-safe operating system. \TU/lmr/m/it/12 Communications of the ACM\TU/lmr/m/n/12 , \TU/lmr/m/it/12 54\TU/lmr/m/n/12 (12), 123.
  []
 
 [36]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2203.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2219.
 [37]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2203.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2219.
 (out/FormalReview.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2203.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2203.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2219.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 2219.
  ) 
 Here is how much of TeX's memory you used:
- 26335 strings out of 492933
- 514274 string characters out of 6133145
- 670685 words of memory out of 5000000
- 30172 multiletter control sequences out of 15000+600000
+ 26337 strings out of 492933
+ 514304 string characters out of 6133145
+ 714271 words of memory out of 5000000
+ 30174 multiletter control sequences out of 15000+600000
  541984 words of font info for 78 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 50i,17n,52p,875b,461s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 50i,15n,52p,875b,594s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on out/FormalReview.pdf (37 pages).

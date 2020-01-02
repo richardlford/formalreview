@@ -736,8 +736,7 @@ of "Definitions". Some projects are broken up by component.
 | why2           | 98    | 40045  | 260    | 67    | 1787 | Why2 verification tool                              |
 | why3 1.0       | 189   | 44304  | 968    | 365   | 1030 | Why3 verification tool                              |
 |----------------+-------+--------+--------+-------+------+-----------------------------------------------------+
-
-breakable: true
+{ breakable: true }
 
 # References
 [BIB]
