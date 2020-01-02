@@ -668,63 +668,76 @@ Here are some statistics for projects using Coq. The "Types" column is
 the number of inductive types defined. The "Defs" column is the number
 of "Definitions". Some projects are broken up by component.
 
-|----------------+------------+--------+--------+-------+------+-----------------------------------------------------------------|
-| Project        | #Coq Files |   SLOC | Proofs | Types | Defs | Notes                                                           |
-|----------------+{width:5em}:+-------:+-------:+------:+-----:+-{width:5cm}-----------------------------------------------------|
-| certikos       |            |        |        |       |      | Kit Operating System                                            |
-| - compcert     |        205 | 206270 |   5359 |   465 | 2945 | Modified compcert                                               |
-| - compcertx    |         50 |   8645 |    326 |    25 |   60 | Compcert for sep compilation                                    |
-| - liblayers    |         55 |  22122 |    725 |    43 |  189 |                                                                 |
-| - mcertikos    |        449 | 207281 |   5591 |   324 | 1757 |                                                                 |
-|----------------+------------+--------+--------+-------+------+-----------------------------------------------------------------|
-| cfml           |        177 |  65587 |   2769 |   131 |  892 | Tool for proving OCaml programs in Separation Logic             |
-| ch2o           |        116 |  49351 |   4472 |   153 |  424 | A formalization of the C11 standard in Coq                      |
-| compcert 3.3   |        231 | 215450 |   6728 |   593 | 4601 | Formally Verified C Compiler                                    |
-| compcert 3.4   |        225 | 177117 |   6729 |   525 | 3031 | Formally Verified C Compiler                                    |
-| coq            |       1984 | 247663 |  12131 |  1097 | 5666 | Coq Proof Assistant Library                                     |
-| Coq-dL         |         84 |  83871 |   2849 |    50 |  894 | Formalization of KeYmaeraX in Coq                               |
-| coquelicot     |         28 |  41615 |   1751 |     6 |  324 | User friendly Calculus in Coq                                   |
-| corespec       |         41 |  35694 |   1351 |    33 |  215 | Formalization of Haskell Core in Coq                            |
-| Corn           |        348 | 156363 |   6895 |    33 | 2118 | Coq Constructive Repository at Nijmegen (Reals)                 |
-| DeepSpecDB     |         55 |  32788 |    531 |    30 | 1151 | DeepSpec Data Base                                              |
-|----------------+------------+--------+--------+-------+------+-----------------------------------------------------------------|
-| dsss17 -total  |        490 | 302318 |  10580 |  1061 | 5162 | DeepSpec Summer School 2017                                     |
-| - auto         |          6 |   3495 |    148 |    16 |   23 | Proof Automation - Chlipala                                     |
-| - CAL          |        378 | 245501 |   8762 |   834 | 4321 | Certifying software with crashes (Cert Abstr layers)            |
-| - compiler     |          6 |   3813 |    116 |    22 |   48 | Compiler for Imp (Xaxier)                                       |
-| - Metalib      |         18 |   7015 |    307 |     7 |   97 | Support for Stlc                                                |
-| - qc           |          9 |   5073 |     26 |    24 |   84 | QuickChick                                                      |
-| - SF           |         34 |  20875 |    656 |   107 |  316 | Software Foundations                                            |
-| - Stlc         |         12 |   8942 |    392 |    27 |   62 | Lang Spec and Variable binding                                  |
-| - vminus       |         27 |   7604 |    173 |    24 |  211 | Vellvm: Verifying the LLVM                                      |
-|----------------+------------+--------+--------+-------+------+-----------------------------------------------------------------|
-| dsss18 - total |        743 | 258178 |   8617 |   614 | 4399 | DeepSpec Summeer School 2018                                    |
-| - charIO       |         18 |   3704 |     84 |    23 |  167 |                                                                 |
-| - dw           |         88 |  17300 |    199 |    45 |  572 |                                                                 |
-| - kami         |         75 |  47358 |   1996 |    97 |  624 |                                                                 |
-| - lf           |         38 |  17147 |    480 |    78 |  194 | SF - Logical Foundations                                        |
-| - plf          |         48 |  33305 |    589 |   140 |  249 | SF - Programming Languages Foundations                          |
-| - qc           |         10 |   6767 |     21 |    28 |   80 | Quick Chick                                                     |
-| - vc           |         15 |   9172 |   4915 |   174 | 1685 | Verifiable C (Proofs using VST)                                 |
-| - vfa          |         30 |   8680 |    205 |    28 |  168 | SF - Verified Functional Algorithms                             |
-|----------------+------------+--------+--------+-------+------+-----------------------------------------------------------------|
-| fiat           |        647 | 197824 |   5623 |    76 | 4075 | Deductive Synthesis of Abstract Data Types in a Proof Assistant |
-| - Narcissus    |         72 |  32310 |    847 |    12 |  605 | Subset of Fiat for interface generation                         |
-|----------------+------------+--------+--------+-------+------+-----------------------------------------------------------------|
-| flocq          |         40 |  67543 |   1225 |    21 |  317 | Formalization of floating point                                 |
-| kami           |        101 |  53910 |   1937 |    87 |  976 | Framework to Support Implementing and Verifying                 |
-|                |            |        |        |       |      | Bluespec-style Hardware Components                              |
-| math-comp      |         92 | 111079 |  11379 |    38 | 3509 | Mathematical Components Library                                 |
-| qc             |          9 |   6239 |     21 |    28 |   79 | SF - Quick Chick 1.0                                            |
-| template-coq   |         72 |  11541 |    180 |    64 |  472 | quoting library for Coq (frontend for Certicoq)                 |
-| tlc            |         58 |  40300 |   2496 |    89 |  552 | General purpose alternate to Coq's Standard Library             |
-| vellvm         |         55 |  24006 |   1085 |   122 |  635 | Verifying LLVM                                                  |
-| verified-ifc   |         58 |  31527 |    849 |   123 |  395 | A Verified Information-Flow Architecture                        |
-| vst            |        508 | 314515 |  11812 |   481 | 7882 | Verified Software Toolchain                                     |
-| why2           |         98 |  40045 |    260 |    67 | 1787 | Why2 verification tool                                          |
-| why3 1.0       |        189 |  44304 |    968 |   365 | 1030 | Why3 verification tool                                          |
-|----------------+------------+--------+--------+-------+------+-----------------------------------------------------------------|
++----------------+-------+--------+--------+-------+------+-----------------------------------------------------+
+| Project        | #Coq  | SLOC   | Proofs | Types | Defs | Notes                                               |
+|                | Files |        |        |       |      |                                                     |
++---------------:+------:+-------:+-------:+------:+-----:|---{width:6cm}---------------------------------------+
+| certikos       |       |        |        |       |      | Kit Operating System                                |
+| - compcert     | 205   | 206270 | 5359   | 465   | 2945 | Modified compcert                                   |
+| - compcertx    | 50    | 8645   | 326    | 25    | 60   | Compcert for sep compilation                        |
+| - liblayers    | 55    | 22122  | 725    | 43    | 189  |                                                     |
+| - mcertikos    | 449   | 207281 | 5591   | 324   | 1757 |                                                     |
+|----------------+-------+--------+--------+-------+------+-----------------------------------------------------+
+| cfml           | 177   | 65587  | 2769   | 131   | 892  | Tool for proving OCaml                              |
+|                |       |        |        |       |      | programs in Separation Logic                        |
+| ch2o           | 116   | 49351  | 4472   | 153   | 424  | A formalization of the C11                          |
+|                |       |        |        |       |      | standard in Coq                                     |
+| compcert 3.3   | 231   | 215450 | 6728   | 593   | 4601 | Formally Verified C Compiler                        |
+| compcert 3.4   | 225   | 177117 | 6729   | 525   | 3031 | Formally Verified C Compiler                        |
+| coq            | 1984  | 247663 | 12131  | 1097  | 5666 | Coq Proof Assistant Library                         |
+| Coq-dL         | 84    | 83871  | 2849   | 50    | 894  | Formalization of KeYmaeraX                          |
+|                |       |        |        |       |      | in Coq                                              |
+| coquelicot     | 28    | 41615  | 1751   | 6     | 324  | User friendly Calculus in Coq                       |
+| corespec       | 41    | 35694  | 1351   | 33    | 215  | Formalization of Haskell Core                       |
+|                |       |        |        |       |      | in Coq                                              |
+| Corn           | 348   | 156363 | 6895   | 33    | 2118 | Coq Constructive Repository at                      |
+|                |       |        |        |       |      | Nijmegen (Reals)                                    |
+| DeepSpecDB     | 55    | 32788  | 531    | 30    | 1151 | DeepSpec Data Base                                  |
+|----------------+-------+--------+--------+-------+------+-----------------------------------------------------+
+| dsss17 -total  | 490   | 302318 | 10580  | 1061  | 5162 | DeepSpec Summer School 2017                         |
+| - auto         | 6     | 3495   | 148    | 16    | 23   | Proof Automation - Chlipala                         |
+| - CAL          | 378   | 245501 | 8762   | 834   | 4321 | Certifying software with crashes                    |
+|                |       |        |        |       |      | (Cert Abstr layers)                                 |
+| - compiler     | 6     | 3813   | 116    | 22    | 48   | Compiler for Imp (Xaxier)                           |
+| - Metalib      | 18    | 7015   | 307    | 7     | 97   | Support for Stlc                                    |
+| - qc           | 9     | 5073   | 26     | 24    | 84   | QuickChick                                          |
+| - SF           | 34    | 20875  | 656    | 107   | 316  | Software Foundations                                |
+| - Stlc         | 12    | 8942   | 392    | 27    | 62   | Lang Spec and Variable binding                      |
+| - vminus       | 27    | 7604   | 173    | 24    | 211  | Vellvm: Verifying the LLVM                          |
+|----------------+-------+--------+--------+-------+------+-----------------------------------------------------+
+| dsss18 - total | 743   | 258178 | 8617   | 614   | 4399 | DeepSpec Summeer School 2018                        |
+| - charIO       | 18    | 3704   | 84     | 23    | 167  |                                                     |
+| - dw           | 88    | 17300  | 199    | 45    | 572  |                                                     |
+| - kami         | 75    | 47358  | 1996   | 97    | 624  |                                                     |
+| - lf           | 38    | 17147  | 480    | 78    | 194  | SF - Logical Foundations                            |
+| - plf          | 48    | 33305  | 589    | 140   | 249  | SF - Programming Languages                          |
+|                |       |        |        |       |      | Foundations                                         |
+| - qc           | 10    | 6767   | 21     | 28    | 80   | Quick Chick                                         |
+| - vc           | 15    | 9172   | 4915   | 174   | 1685 | Verifiable C (Proofs using VST)                     |
+| - vfa          | 30    | 8680   | 205    | 28    | 168  | SF - Verified Functional                            |
+|                |       |        |        |       |      | Algorithms                                          |
+|----------------+-------+--------+--------+-------+------+-----------------------------------------------------+
+| fiat           | 647   | 197824 | 5623   | 76    | 4075 | Deductive Synthesis of Abstract                     |
+|                |       |        |        |       |      | Data Types in a Proof Assistant                     |
+| - Narcissus    | 72    | 32310  | 847    | 12    | 605  | Subset of Fiat for interface                        |
+|                |       |        |        |       |      | generation                                          |
+|----------------+-------+--------+--------+-------+------+-----------------------------------------------------+
+| flocq          | 40    | 67543  | 1225   | 21    | 317  | Formalization of floating point                     |
+| kami           | 101   | 53910  | 1937   | 87    | 976  | Framework to Support Implementing                   |
+|                |       |        |        |       |      | and Verifying Bluespec-style                        |
+|                |       |        |        |       |      | Hardware Components                                 |
+| math-comp      | 92    | 111079 | 11379  | 38    | 3509 | Mathematical Components Library                     |
+| qc             | 9     | 6239   | 21     | 28    | 79   | SF - Quick Chick 1.0                                |
+| template-coq   | 72    | 11541  | 180    | 64    | 472  | quoting library for Coq (frontend for Certicoq)     |
+| tlc            | 58    | 40300  | 2496   | 89    | 552  | General purpose alternate to Coq's Standard Library |
+| vellvm         | 55    | 24006  | 1085   | 122   | 635  | Verifying LLVM                                      |
+| verified-ifc   | 58    | 31527  | 849    | 123   | 395  | A Verified Information-Flow Architecture            |
+| vst            | 508   | 314515 | 11812  | 481   | 7882 | Verified Software Toolchain                         |
+| why2           | 98    | 40045  | 260    | 67    | 1787 | Why2 verification tool                              |
+| why3 1.0       | 189   | 44304  | 968    | 365   | 1030 | Why3 verification tool                              |
+|----------------+-------+--------+--------+-------+------+-----------------------------------------------------+
 
+breakable: true
 
 # References
 [BIB]
