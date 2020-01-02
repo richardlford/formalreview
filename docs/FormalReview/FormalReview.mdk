@@ -19,16 +19,11 @@ Bibliography: FormalReview.bib
 Cite All:     true 
 Csl Style: apa
 
-[INCLUDE=zero]
-Tex Header  : \setcounter{footnote}{-1}
 xPackage     : times
 xTex Header  : \IfFileExists{luximono.sty}{\usepackage[scaled=0.81]{luximono}}{\usepackage[scaled=0.81]{beramono}}
-Colorizer: dafny
-Colorizer: dafnyx
 ~Pre,.code1 : replace="//\\forall\s/\(&forall;[&thinsp;]{font-family=serif}\)\
                        //\bexists\s/\(&exist;[&thinsp;]{font-family=serif}\)\
                        //g"
-              language=dafnyx
               font-size=small
 ~Pre        : margin-left=1em
 
@@ -154,11 +149,14 @@ incomplete.
 
 # Formal Methods Research Groups
 ## DeepSpec Project
-- Home Page :: <https://deepspec.org>
+* Home Page
+  : <https://deepspec.org>
 
 ## Galois Inc
-- Home Page :: <https://galois.com/>
-- Sources :: <https://github.com/GaloisInc>
+* Home Page 
+  : <https://galois.com/>
+* Sources 
+  : <https://github.com/GaloisInc>
 
 ## Yale FLINT Group
 - Home Page :: <http://flint.cs.yale.edu/flint/>
@@ -767,6 +765,5 @@ of "Definitions". Some projects are broken up by component.
 |----------------+-------+--------+--------+-------+------+----------------------------------+
 { .booktable }
 
-# References
 [BIB]
 
