@@ -134,7 +134,7 @@ Css Header  : body { text-rendering=optimizeLegibility }
 [TITLE]
 
 ~ Abstract
-This is a review of current formal methods theory, tools, projects and people.
+This is a review of current formal methods theory, tools, projects and people, but also related topics in software engineering and mathematics.
 ~
 
 [TOC]
@@ -142,12 +142,17 @@ This is a review of current formal methods theory, tools, projects and people.
 
 # Introduction
 
-This document briefly summarizes current formal method groups, proof
-systems, projects and researchers. For each it gives pointers for
-further information. It is a work-in-progress and is necessarily
-incomplete.
+This document was written in the course of a research effort to apply
+formal methods to the task of independent verification and validation of
+software and hardware. Therefore its focus is on formal methods groups,
+proof systems, projects and researchers, but it also includes some more
+general topics in software engineering and mathematics. For each it gives
+pointers for further information. The bibliography at the end includes
+some papers or topics that are not mentioned in the body of the document.
+It is a work-in-progress and is necessarily incomplete.
 
 # Formal Methods Research Groups
+In this section I will mention some of the research groups with which I'm most familiar. 
 ## DeepSpec Project
 * Home Page
   : <https://deepspec.org>
@@ -300,7 +305,6 @@ theorems and inference rules without compromising its soundness."
   : [F* Tutorial](https://www.fstar-lang.org/tutorial/)
 
 ## LEAN
-
 
 * Papers
   : [A Metaprogramming Framework for Formal Verification](https://pp.ipd.kit.edu/uploads/publikationen/ebner17meta.pdf)
