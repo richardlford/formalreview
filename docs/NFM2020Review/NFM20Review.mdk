@@ -1,0 +1,866 @@
+<!--madoko
+Title       : NASA Formal Methods 2020 Conference Review
+Title Note  : &date; &time;
+Author      : Richard L. Ford
+Email       : richardlford@gmail.com
+Doc Class   : [12pt,twoside]article
+Package     : [left=1.0in, right=0.75in]geometry
+Heading Base: 2
+Toc Depth   : 5
+Heading Depth: 5
+xMath Mode   : dynamic
+
+xBibliography: DafnyRef.bib
+xBibliography: references.bib
+xBibliography: paper-full.bib
+xBibliography: poc.bib
+xBibliography: krml250.bib
+Bibliography: NFM20Review.bib
+Cite All:     false 
+Csl Style: apa
+
+xPackage     : times
+xTex Header  : \IfFileExists{luximono.sty}{\usepackage[scaled=0.81]{luximono}}{\usepackage[scaled=0.81]{beramono}}
+~Pre,.code1 : replace="//\\forall\s/\(&forall;[&thinsp;]{font-family=serif}\)\
+                       //\bexists\s/\(&exist;[&thinsp;]{font-family=serif}\)\
+                       //g"
+              font-size=small
+~Pre        : margin-left=1em
+
+~Exercise   : .block @Exercise=arabic0 label='[@Exercise]{.Exercise-label}'
+              before='[**Exercise\ &label;.** ]{.Exercise-before}'
+	            after=' &box;'
+
+Comment     : We use four backticks (````) for grammar productions. We use $t$he Java
+              colorizer as that seems good enough for grammars.
+Colorizer   : java
+
+.pre-fenced4: language=java .grammar-def
+.code2      : language=java .grammar-ref
+
+.grammar-def: replace='//(^|\n)([A-Z]\w+)/\1\([\2]{#1_\L\2\E .ntdef}\)\
+                       //(^|\n)([a-z]\w+)/\1\([\2]{#2_\L\2\E .ntdef}\)\
+                       //\/\/.*/\0\
+                       //\/\*[\s\S]*?\*\//\0\
+                       //"([^"|\s]*)"/\([\"\1\"]{.terminal}\)\
+                       //([^\[\(\{\w#.&])([A-Z]\w+)\b/\1\([\2](#1_\L\2\E){.ntref}\)\
+                       //([^\[\(\{\w#.&])([a-z]\w+)\b/\1\([\2](#2_\L\2\E){.ntref}\)\
+                       //cg'    
+
+.grammar-ref: replace='//\/\/.*/\0\
+                       //\/\*[\s\S]*?\*\//\0\
+                       //"([^"\s]*)"/\([\"\1\"]{.terminal}\)\
+                       //([^\[\(\{\w#.&])([A-Z]\w+)\b/\1\([\2](#1_\L\2\E){.ntref}\)\
+                       //([^\[\(\{\w#.&])([a-z]\w+)\b/\1\([\2](#2_\L\2\E){.ntref}\)\
+                       //^([A-Z]\w+)$/\([\1](#1_\L\1\E){.ntref}\)\
+                       //^([a-z]\w+)$/\([\1](#2_\L\1\E){.ntref}\)\
+                       //cg'    
+.terminal   : font-weight=bold color=black                       
+.ntref      : color=maroon
+.ntdef      : color=olive
+
+.AuthorNote : before="**&author;: **"
+~Daan       : .AuthorNote color=purple author="Daan"
+~Rich       : .AuthorNote color=teal author="Rich"
+
+.grammar    : .framed padding=1ex margin-left=0ex language=java
+
+Css Header  : body { text-rendering=optimizeLegibility }
+
+
+<style>
+.code-escaped .comment-color { color: darkgreen }
+
+.token.java.string     { color: black; font-weight: bold }
+.token.java.type       { color: black; font-weight: normal }
+.token.java.operator,
+.token.java.delimiter  { color: blue; }
+</style>
+
+~ MathDefs
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Equal}{\;\;\;=\;\;\;}
+\newcommand{\Equiv}{\;\;\equiv\;\;}
+\newcommand{\ES}{\;\;}
+\newcommand{\ite}[3]{\textrm{if}\ES #1 \ES\textrm{then}\ES #2 \ES\textrm{else}\ES #3}
+\newcommand{\Less}{\ll}
+\newcommand{\Imp}{\;\Longrightarrow\;}
+\renewcommand{\And}{\;\wedge\;}
+\newcommand{\Or}{\;\vee\;}
+\newcommand{\FBelow}{\ES\dot{\Rightarrow}\ES}
+\newcommand{\least}{^{\downarrow}}
+\newcommand{\greatest}{^{\uparrow}}
+\newcommand{\Dfrac}[2]{%
+  \ooalign{%
+    $\genfrac{}{}{1.8pt}0{#1}{#2}$\cr%
+    $\color{white}\genfrac{}{}{1pt}0{\phantom{#1}}{\phantom{#2}}$}%
+}
+\newcommand{\DfracA}[2]{%
+  \ooalign{%
+    $\genfrac{}{}{1.2pt}0{#1}{#2}$\cr%
+    $\color{white}\genfrac{}{}{0.6pt}0{\phantom{#1}}{\phantom{#2}}$}%
+}
+\newcommand{\false}{\mathit{false}}
+\newcommand{\true}{\mathit{true}}
+\newcommand{\fib}{\mathit{fib}}
+\newcommand{\PDownward}{\mathit{PDownward}}
+\newcommand{\iterX}[1]{\hat{#1}}
+\newcommand{\IterX}[1]{\check{#1}}
+\renewcommand\vec[1]{\overrightarrow{#1}}
+\newcommand\cev[1]{\overleftarrow{#1}}
+\newcommand{\iterY}[1]{\vec{#1}}
+\newcommand{\IterY}[1]{\cev{#1}}
+\newcommand{\iter}[1]{{{}^{\flat}\!#1}}
+\newcommand{\Iter}[1]{{{}^{\sharp}\!#1}}
+
+% daan's fractions
+\newcommand\xstrut{\vrule height 9.4pt depth 4.6pt width 0pt\relax}
+\newcommand\xupstrut{\vrule height 9.4pt depth 0pt width 0pt\relax}
+         
+\renewcommand{\Dfrac}[2]{%
+  \ooalign{%
+    % first a thick fraction line
+    $\genfrac{}{}{1.4pt}1{\displaystyle #1\strut}{\displaystyle #2\strut}$\cr%
+    % and then a thinner white fraction line on top of it 
+    $\color{white}\genfrac{}{}{0.6pt}1{\phantom{\displaystyle #1\strut}}{\phantom{\displaystyle #2\strut}}$}%
+}
+\renewcommand{\dfrac}[2]{%
+   \displaystyle\genfrac{}{}{0.4pt}1{\displaystyle #1}{\displaystyle #2}%
+}
+~
+
+-->
+
+[TITLE]
+
+~ Abstract
+This is a review of current formal methods theory, tools, projects and people.
+~
+
+[TOC]
+
+
+# Introduction
+
+This document briefly summarizes current formal method groups, proof
+systems, projects and researchers. For each it gives pointers for
+further information. It is a work-in-progress and is necessarily
+incomplete.
+
+# Formal Methods Research Groups
+## DeepSpec Project
+* Home Page
+  : <https://deepspec.org>
+
+## Galois Inc
+* Home Page 
+  : <https://galois.com/>
+* Sources 
+  : <https://github.com/GaloisInc>
+
+## Yale FLINT Group
+* Home Page 
+  : <http://flint.cs.yale.edu/flint/>
+* Publications
+  : <http://flint.cs.yale.edu/flint/publications>
+
+"The FLINT group at Yale aims to develop a novel and practical
+programming infrastructure for constructing large-scale certified
+systems software. By combining recent new advances in programming
+languages, formal semantics, certified operating systems, program
+verification, proof assistants and automation, language-based
+secrurity, and certifying compilers, we hope to attack the following
+research questions:
+
+- what system software structures can offer the best support for extensibility, security, and resilience?
+- what program logics and semantic models can best capture these abstractions?
+- what are the right programming languages and environments for developing such certified system software?
+- how to build new automation facilities to make certified software really scale?"
+
+## Everest Expedition
+* Home Page 
+  : <https://project-everest.github.io/>
+* Source
+  : <https://github.com/project-everest>
+
+"We are a team of researchers and engineers from several
+organizations, including Microsoft Research, Carnegie Mellon
+University, INRIA, and the MSR-INRIA joint center.
+
+Everest is a recursive acronym: It stands for the “Everest VERified
+End-to-end Secure Transport”."
+
+## University of Washington Programming Languages and Software Engineering
+* Home Page 
+  : <http://uwplse.org/>
+* Source
+  : <https://github.com/uwplse>
+
+# Formal Methods Proof Systems
+## Coq
+* Home Page 
+  : <https://coq.inria.fr/>
+* Source
+  : <https://github.com/coq/coq.git>
+
+Coq is a formal proof management system. It provides a formal language
+to write mathematical definitions, executable algorithms and theorems
+together with an environment for semi-interactive development of
+machine-checked proofs. Typical applications include the certification
+of properties of programming languages (e.g. the CompCert compiler
+certification project, or the Bedrock verified low-level programming
+library), the formalization of mathematics (e.g. the full
+formalization of the Feit-Thompson theorem or homotopy type theory)
+and teaching.
+
+## KeYmaeraX
+* Home Page 
+  : <http://www.ls.cs.cmu.edu/KeYmaeraX/>
+* Source
+  : <https://github.com/LS-Lab/KeYmaeraX-release>
+
+KeYmaeraX is a system for specifying and verifying Hybrid
+Cyber-Physical Systems.
+
+## Isabelle
+* Home Page 
+  : <https://isabelle.in.tum.de/>
+* Source
+  : hg clone <https://isabelle.in.tum.de/repos/isabelle>
+
+"Isabelle is a generic proof assistant. It allows mathematical
+formulas to be expressed in a formal language and provides tools for
+proving those formulas in a logical calculus. The main application is
+the formalization of mathematical proofs and in particular formal
+verification, which includes proving the correctness of computer
+hardware or software and proving properties of computer languages and
+protocols."
+
+## HOL4
+* Home Page 
+  : <https://hol-theorem-prover.org/>
+* Source
+  : <https://github.com/HOL-Theorem-Prover>
+
+"The HOL interactive theorem prover is a proof assistant for
+higher-order logic: a programming environment in which theorems can be
+proved and proof tools implemented. Built-in decision procedures and
+theorem provers can automatically establish many simple theorems
+(users may have to prove the hard theorems themselves!) An oracle
+mechanism gives access to external programs such as SMT and BDD
+engines. HOL is particularly suitable as a platform for implementing
+combinations of deduction, execution and property checking."
+
+## HOL-Light
+* Home Page 
+  : <https://www.cl.cam.ac.uk/~jrh13/hol-light/>
+* Source
+  : <https://github.com/jrh13/hol-light/>
+
+"HOL Light is a computer program to help users prove interesting
+mathematical theorems completely formally in higher order logic. It
+sets a very exacting standard of correctness, but provides a number of
+automated tools and pre-proved mathematical theorems (e.g. about
+arithmetic, basic set theory and real analysis) to save the user
+work. It is also fully programmable, so users can extend it with new
+theorems and inference rules without compromising its soundness."
+
+## Dafny
+* Home Page 
+  : [Dafny](https://www.microsoft.com/en-us/research/project/dafny-a-language-and-program-verifier-for-functional-correctness)
+* Source
+  : <https://github.com/Microsoft/dafny>
+* Tutorial
+  : <https://rise4fun.com/dafny>
+
+## Boogie
+* Home Page 
+  : [Boogie](https://www.microsoft.com/en-us/research/project/boogie-an-intermediate-verification-language)
+* Source
+  : <https://github.com/boogie-org/boogie>
+* Documentation
+  : <https://boogie-docs.readthedocs.io/en/latest/>
+* Online trial
+  : <https://rise4fun.com/Boogie>
+
+## Why3
+* Home Page 
+  : <http://why3.lri.fr/>
+
+## Frama-C
+* Home Page 
+  : <https://frama-c.com/>
+
+## F*
+* Home Page 
+  : <https://www.fstar-lang.org/>
+* Source
+  : <http://github.com/FStarLang/FStar>
+* Papers:
+  : [F* Tutorial](https://www.fstar-lang.org/tutorial/)
+
+## LEAN
+
+
+* Papers
+  : [A Metaprogramming Framework for Formal Verification](https://pp.ipd.kit.edu/uploads/publikationen/ebner17meta.pdf)
+
+# Formal Methods Projects
+
+## DeepSpec Projects
+### CompCert
+* Home Page 
+  : <http://compcert.inria.fr>
+* Source
+  : <https://github.com/AbsInt/CompCert.git>
+
+The CompCert C verified compiler is a compiler for a large subset of
+the C programming language that generates code for the PowerPC, ARM,
+x86 and RISC-V processors.
+
+The distinguishing feature of CompCert is that it has been formally
+verified using the Coq proof assistant: the generated assembly code is
+formally guaranteed to behave as prescribed by the semantics of the
+source C code.
+
+### Verified Software Toolchain
+* Home Page 
+  : <http://vst.cs.princeton.edu/>
+* Source
+  : <https://github.com/PrincetonUniversity/VST.git>
+
+The software toolchain includes static analyzers to check assertions
+about your program; optimizing compilers to translate your program to
+machine language; operating systems and libraries to supply context
+for your program. The Verified Software Toolchain project assures with
+machine-checked proofs that the assertions claimed at the top of the
+toolchain really hold in the machine-language program, running in the
+operating-system context.
+
+In some application domains it is not enough to build reliable
+software systems, one wants proved-correct software. This is the case
+for safety-critical systems (where software bugs can cause injury or
+death) and for security-critical applications (where an attacker is
+deliberately searching for, and exploiting, software bugs). Since
+proofs are large and complex, the proof-checking must be
+mechanized. Machine-checked proofs of real software systems are
+difficult, but now should be possible, given the recent advances in
+the theory and engineering of mechanized proof systems applied to
+software verification. But there are several challenges:
+
+- Real software systems are usually built from components in different
+  programming languages.
+
+- Some parts of the program need full correctness proofs, which must
+  be constructed with great effort; other parts need only safety
+  proofs, which can be constructed automatically.
+
+- One reasons about correctness at the source-code level, but one runs
+  a machine-code program translated by a compiler; the compiler must
+  be proved correct.
+
+- These proofs about different properties, with respect to different
+  programming languages, must be integrated together end-to-end in a
+  way that is also proved correct and machine-checked.
+
+We address these challenges by defining Verifiable C, a program logic
+for the C programming language. Verifiable C is proved sound with
+respect to the operational semantics of CompCert C; in turn, the
+CompCert verified optimizing C compiler is proved correct with respect
+to the assembly-language semantics of the PowerPC, ARM, and x86
+processors.
+
+### CertiKOS - Certified Kit Operating System
+* Home Page 
+  : <http://flint.cs.yale.edu/certikos/>
+* Source
+  : <https://github.com/npe9/certikos.git>
+
+Developed by the FLINT group.
+
+### VeriML
+* Home Page 
+  : <http://flint.cs.yale.edu/shao/papers/veriml.html>
+* Source
+  : <http://flint.cs.yale.edu/flint/publications/veriml-0.1.tar.gz>
+* Paper
+  : <http://flint.cs.yale.edu/flint/publications/verimltr.pdf>
+
+Developed by the FLINT group.
+
+Modern proof assistants such as Coq and Isabelle provide high degrees
+of expressiveness and assurance because they support formal reasoning
+in higher-order logic and supply explicit machine-checkable proof
+objects. Unfortunately, large scale proof development in these proof
+assistants is still an extremely difficult and time-consuming
+task. One major weakness of these proof assistants is the lack of a
+single language where users can develop complex tactics and decision
+procedures using a rich programming model and in a typeful
+manner. This limits the scalability of the proof development process,
+as users avoid developing domain-specific tactics and decision
+procedures.
+¯˘
+In this paper, we present VeriML---a novel language design that
+couples a type-safe effectful computational language with first-class
+support for manipulating logical terms such as propositions and
+proofs. The main idea behind our design is to integrate a rich logical
+framework---similar to the one supported by Coq---inside a
+computational language inspired by ML. The language design is such
+that the added features are orthogonal to the rest of the
+computational language, and also do not require significant additions
+to the logic language, so soundness is guaranteed. We have built a
+prototype implementation of VeriML including both its type-checker and
+an interpreter. We demonstrate the effectiveness of our design by
+showing a number of type-safe tactics and decision procedures written
+in VeriML.
+
+### Certifying Low-Level Programs with Hardware Interrupts and Preemptive Threads
+* Home Page 
+  : <http://flint.cs.yale.edu/shao/papers/aimjar.html>
+* Source
+  : <http://flint.cs.yale.edu/flint/publications/aim.coq.tar.gz>
+* Local repo
+  : e/certhwint
+
+Developed by the FLINT group.
+
+### Kami
+* Home Page 
+  : <http://plv.csail.mit.edu/kami/>
+* Source
+  : <https://github.com/mit-plv/kami>
+
+Kami is a library that turns Coq into an IDE for digital hardware
+development, based on a clean-slate reimplementation of a core of the
+[Bluespec](http://www.bluespec.com) language. We span the gap from mathematical specifications to
+hardware circuit descriptions (RTL netlists). We support specifying,
+implementing, verifying, and compiling hardware, reasoning at a high
+level about particular hardware components but in the end deriving
+first-principles Coq theorems about circuits. No part of Kami need be
+trusted beside the formalization of low-level (Verilog-style) circuit
+descriptions; all other aspects have end-to-end correctness proofs
+checked by Coq. Hardware designs are broken into separately verified
+modules, reasoned about with a novel take on labeled transition
+systems. Furthermore, Coq provides a natural and expressive platform
+for metaprogramming, or building verified circuit generators, as for a
+memory caching system autogenerated for a particular shape of cache
+hierarchy, or a CPU generated given a number of concurrent cores as
+input.
+
+### Haskell Core Spec
+* Home Page 
+  : <https://deepspec.org/entry/Project/Haskell+CoreSpec>
+* Source
+  : <https://github.com/sweirich/corespec.git>
+
+The Haskell CoreSpec Project aims to develop formal specifications for
+a high-level, industrially-relevant functional programming
+language. In particular, this project targets the core language of the
+Glasgow Haskell Compiler, the primary compiler for the Haskell
+programming language. GHC has long been used as both an industrial
+strength compiler and a platform for language research. The compiler
+itself is open source, and has primarily been developed and is
+currently maintained by researchers at Microsoft Research,
+Cambridge. The CoreSpec project will develop a formal Coq
+specification of the GHC Core language, including the syntax, type
+system, and semantics, and connect that specification to other
+components of the DeepSpec project.
+
+### Deep Spec Server
+* Home Page 
+  : <https://deepspec.org/entry/Project/DeepSpec+Web+Server>
+* Source
+  : Not available but see Libmicrohttpd below. 
+
+
+"For a final demo, unifying many of the Expedition threads, we aim to
+build a verified web server."
+
+Status: "A team at Penn has begun exploring the design space and
+building a first-draft prototype (for now, running on Linux) of a web
+server library loosely based on the popular libmicrohttpd.  The goal
+of this short-term effort is to understand the integration issues that
+will be involved in putting together a fully functional server from
+components under development within DeepSpec.  In particular, we want
+to understand what demands it will place on CertiKOS in terms of OS
+features (IPC, network support, shared-memory processes,
+interoperation between native clients and Linux VMs), what
+verification challenges it raises for VST, what integration challenges
+it poses for using VST and CertiKOS together."
+
+#### GNU Libmicrohttpd
+* Home Page 
+  : <https://www.gnu.org/software/libmicrohttpd/>
+* Source
+  : <https://gnunet.org/git/libmicrohttpd.git>
+
+### Verdi
+* Home Page 
+  : <http://verdi.uwplse.org/>
+* Source
+  : <https://github.com/uwplse/verdi>
+* Example
+  : <https://github.com/uwplse/verdi-raft>
+
+Verification of distributed systems.
+
+### Vellvm
+* Home Page 
+  : <http://www.cis.upenn.edu/~stevez/vellvm/>
+* Source
+  : <https://github.com/vellvm/vellvm>
+* Old Source
+  : <https://github.com/vellvm/vellvm-legacy>
+
+"The Vellvm project is building a (verified LLVM), a framework for
+reasoning about programs expressed in LLVM's intermediate
+representation and transformations that operate on it. Vellvm provides
+a mechanized formal semantics of LLVM's intermediate representation,
+its type system, and properties of its SSA form. The framework is
+built using the Coq interactive theorem prover. It includes multiple
+operational semantics and proves relations among them to facilitate
+different reasoning styles and proof techniques.
+
+#### Latest Results
+
+During the first year of DeepSpec we
+
+1. worked on developing a new modular semantics for Vellvm, factoring out the memory model
+
+2. made progress on connecting LLVM-IR like SSA semantics with higher-level structural operational semantics 
+
+3. applied low-level language verification techniques to the problem of race detectection instrumentation"
+
+### Deep Spec Crypto
+* Home Page
+  : <https://deepspec.org/entry/Project/Cryptography>
+* Source
+  : <https://github.com/mit-plv/fiat-crypto>
+* Papers
+  : <http://adam.chlipala.net/papers/FiatCryptoSP19/FiatCryptoSP19.pdf>
+            <http://www.cs.princeton.edu/~appel/papers/verified-hmac-drbg.pdf>
+
+"We are pursuing end-to-end proofs of cryptographic functionality, via
+verification of C code at Princeton and synthesis of assembly code at
+MIT.  We are considering both cryptographic primitives
+(e.g. pseudorandom number generation with VST at Princeton and
+elliptic curve operations with fiat-crypto at MIT) and protocols
+(verified with the Foundational Cryptography Framework and connected
+to results about C and assembly programs)."
+
+##### Latest Results:
+
+Fiat Cryptography is now used in Google's BoringSSL library for
+elliptic-curve arithmetic.  As a result, Chrome HTTPS connections now
+run our Coq-generated code.  Our  upcoming S&P 2019 paper goes into
+more detail.
+
+VST verification has recently focused on the primitives HMAC-DGBG and
+HKDF -- both clients of HMAC/SHA256, AES, and parts of the TweetNaCl
+library. In addition to verifying (families of) primitives, we hope to
+soon turn to integration in larger contexts like verified TLS
+libraries.
+
+### DeepSpecDb
+* Source
+  : <https://github.com/PrincetonUniversity/DeepSpecDB>
+* Papers
+  : [VST Verification of B+Trees with Cursors](http://perso.eleves.ens-rennes.fr/people/Aurele.Barriere/papers/vstbtrees.pdf)
+  : [Implementing a high-performance key-value store using a trie of B+-Trees with cursors](https://github.com/PrincetonUniversity/DeepSpecDB/blob/master/papers/adewale/Masters_Thesis.pdf)
+  : [Project Report on DeepSpecDB](https://github.com/PrincetonUniversity/DeepSpecDB/blob/master/papers/luke/report.pdf)
+  : [The Theory and Verification of B+Tree Cursor Relations](https://github.com/PrincetonUniversity/DeepSpecDB/blob/master/papers/mcswiggen/McSwiggen-Thesis.pdf)
+
+### Fiat
+* Home Page 
+  : <http://plv.csail.mit.edu/fiat/>
+* Source
+  : <https://github.com/mit-plv/fiat.git>
+* Papers
+  : [The End of History? Using a Proof Assistant to
+    Replace Language Design with Library Design](https://www.cs.purdue.edu/homes/bendy/Fiat/fiat-snapl.pdf)
+
+"Fiat is a library for the Coq proof assistant for synthesizing
+efficient correct-by-construction programs from declarative
+specifications. Programming by Fiat starts with a high-level
+description of a program, which can be written using libraries of
+specification languages for describing common programming tasks like
+querying a relational database. These specifications are then
+iteratively refined into efficient implementations via automated
+tactics. Each derivation in Fiat produces a formal proof trail
+certifying that the synthesized program meets the original
+specification. Code synthesized by Fiat can be extracted to an
+equivalent OCaml program that can be compiled and run as normal."
+
+### Narcissus
+* Home Page 
+  : <https://www.cs.purdue.edu/homes/bendy/Narcissus/>
+* Source
+  : <https://github.com/mit-plv/fiat/tree/master/src/Narcissus>
+  : <https://github.com/bendy/fiat-asn.1>
+* Papers
+  : NARCISSUS: Deriving Correct-By-Construction Decoders and Encoders from Binary Formats
+  : <https://www.cs.purdue.edu/homes/bendy/Narcissus/narcissus.pdf>
+* Video
+  : <https://deepspec.org/event/dsss18/videos.html Scroll to video>
+
+Narcissus is part of the fiat project to derive
+Correct-By-Construction Decoders and Encoders from Binary Formats.
+
+### Bedrock2
+* Source
+  : <https://github.com/mit-plv/bedrock2>
+
+"The Bedrock2 repository contains ongoing work on a low-level systems
+programming language. One piece of the puzzle is a verified compiler
+targeting RISC-V. The source language itself is also equipped with a
+simple program logic for proving correctness of the source
+programs. It is not ready yet, at least for most uses.  This project
+has similar goals as bedrock, but uses a different design. No code is
+shared between bedrock and bedrock2.
+The source language is a "C-like" language called ExprImp."
+
+### CertiCoq
+* Home Page 
+  : <https://www.cs.princeton.edu/~appel/certicoq/>
+* Source
+  : <https://github.com/PrincetonUniversity/certicoq>
+* Paper
+  : <http://www.cs.princeton.edu/~appel/papers/certicoq-coqpl.pdf>
+
+"The CertiCoq project aims to build a proven-correct compiler for
+dependently-typed, functional languages, such as Gallinathe core
+language of the Coq proof assistant. A proved-correct compiler
+consists of a high-level functional specification, machine-verified
+proofs of important properties, such as safety and correctness, and a
+mechanism to transport those proofs to the generated machine code. The
+project exposes both engineering challenges and foundational questions
+about compilers for dependently-typed languages."
+
+### Template-Coq
+* Home Page 
+  : <https://template-coq.github.io/template-coq/>
+* Source
+  : <https://github.com/Template-Coq/template-coq>
+* Papers
+  : <https://popl18.sigplan.org/event/coqpl-2018-typed-template-coq>
+
+Template Coq is a quoting library for [Coq](http://coq.inria.fr). It
+takes `Coq` terms and constructs a representation of their syntax tree as
+a `Coq` inductive data type. The representation is based on the kernel's
+term representation.
+
+This is used as the first stage of CertiCoq.
+
+### QuickChick
+* Home Page 
+  : <https://deepspec.org/entry/Project/QuickChick>
+* Source
+  : <https://github.com/QuickChick>
+* Book
+  : [QuickChick: Property-Based Testing in Coq](https://softwarefoundations.cis.upenn.edu/qc-current)
+
+* Randomized property-based testing plugin for Coq; a clone of Haskell QuickCheck
+* Includes a foundational verification framework for testing code
+* Includes a mechanism for automatically deriving generators for inductive relations
+
+### Galois Voting System
+* Home Page 
+  : <https://galois.com/blog/2009/03/trustworthy-voting-systems/>
+
+## Everest Projects
+[Project Everest](https://project-everest.github.io) is the combination of the following projects. 
+
+* [F*](https://fstar-lang.org), a verification language for effectful programs
+* [miTLS](https://mitls.org/), reference implementation of the TLS protocol in F*
+* [KreMLin](https://github.com/FStarLang/kremlin), a compiler from a subset of F* to C
+* [HACL*](https://github.com/mitls/hacl-star), a verified library of cryptographic primitives written in F*
+* [Vale](https://github.com/project-everest/vale), a domain-specific language for verified cryptographic primitives in assembly
+* [EverCrypt](https://github.com/project-everest/hacl-star/blob/fstar-master/README.EverCrypt.md), a verified crypto provider that combines HACL* and Vale via an agile, multi-platform, self-configuring cryptographic API.
+* [EverParse](https://github.com/project-everest/everparse), a library and tool to automatically generate verified parsers and serializers for binary data formats
+* [Quackyducky](https://github.com/project-everest/quackyducky), a small tool to translate informal specification of
+  message formats found in RFC (in particular for TLS 1.3) into formal
+  F# specifications, which are in turn transformed into efficient and
+  verified parser implementations.
+
+## Other Projects
+### CakeML
+* Home page
+  : <https://cakeml.org/>
+* Source
+  : <https://github.com/CakeML/cakeml>
+
+"CakeML is a functional programming language and an ecosystem of proofs
+and tools built around the language. The ecosystem includes a
+proven-correct compiler that can bootstrap itself."
+
+### VCC - A verifier for Concurrent C
+* Home Page 
+  : <https://www.microsoft.com/en-us/research/project/vcc-a-verifier-for-concurrent-c/>
+* Source
+  : <https://github.com/Microsoft/vcc.git>
+
+### Compositional CompCert
+* Source
+  : <https://github.com/PrincetonUniversity/compcomp>
+
+Compcert supporting separate compilation. Last modified in 2015.
+
+### GaloisInc Projects
+* Home Page 
+  : <https://galois.com/>
+* Source
+  : <https://github.com/GaloisInc>
+
+"Galois develops technology to guarantee the trustworthiness of
+ systems where failure is unacceptable.
+
+ We apply cutting edge computer science and mathematics to advance the
+ state of the art in software and hardware trustworthiness."
+
+### Bedrock
+* Home Page 
+  : <http://plv.csail.mit.edu/bedrock/>
+
+### FSCQ
+* Home Page 
+  : <http://css.csail.mit.edu/fscq/>
+
+A file system verified in Coq using a separation logic for reasoning about crash safety
+
+### Ur/Web
+* Home Page 
+  : <http://plv.csail.mit.edu/ur/>
+
+# Formal Methods Researchers
+Alphabetically by last name, then first.
+
+## Andrew W Appel
+* Home Page 
+  : <http://www.cs.princeton.edu/~appel/index.html>
+
+## Adam Chlipala
+* Home Page 
+  : <http://adam.chlipala.net/>
+
+## Robert Harper
+* Home Page 
+  : <http://www.cs.cmu.edu/~rwh/>
+
+## Benjamin Pierce
+* Home Page 
+  : <http://www.cis.upenn.edu/~bcpierce/>
+* LinkedIn
+  : <https://github.com/bcpierce00>
+Professor Department of Computer and Information Science University of Pennsylvania.
+Author of [Software Foundations](http://www.cis.upenn.edu/~bcpierce/sf).
+
+## Zhong Shao
+* Home Page 
+  : <http://cs-www.cs.yale.edu/homes/shao/>
+
+# Statistics
+Here are some statistics for projects using Coq. The "Types" column is
+the number of inductive types defined. The "Defs" column is the number
+of "Definitions". Some projects are broken up by component.
+
++----------------+-------+--------+--------+-------+------+----------------------------------+
+| Project        | #Coq  | SLOC   | Proofs | Types | Defs | Notes                            |
+|                | Files |        |        |       |      |                                  |
++:---------------+------:+-------:+-------:+------:+-----:|---{width:6cm}--------------------+
+| certikos       |       |        |        |       |      | Kit Operating System             |
+| - compcert     | 205   | 206270 | 5359   | 465   | 2945 | Modified compcert                |
+| - compcertx    | 50    | 8645   | 326    | 25    | 60   | Compcert for sep compilation     |
+| - liblayers    | 55    | 22122  | 725    | 43    | 189  |                                  |
+| - mcertikos    | 449   | 207281 | 5591   | 324   | 1757 |                                  |
+|----------------+-------+--------+--------+-------+------+----------------------------------+
+| cfml           | 177   | 65587  | 2769   | 131   | 892  | Tool for proving OCaml           |
+|                |       |        |        |       |      | programs in Separation Logic     |
+| ch2o           | 116   | 49351  | 4472   | 153   | 424  | A formalization of the C11       |
+|                |       |        |        |       |      | standard in Coq                  |
+| compcert 3.3   | 231   | 215450 | 6728   | 593   | 4601 | Formally Verified C Compiler     |
+| compcert 3.4   | 225   | 177117 | 6729   | 525   | 3031 | Formally Verified C Compiler     |
+| coq            | 1984  | 247663 | 12131  | 1097  | 5666 | Coq Proof Assistant Library      |
+| Coq-dL         | 84    | 83871  | 2849   | 50    | 894  | Formalization of KeYmaeraX       |
+|                |       |        |        |       |      | in Coq                           |
+| coquelicot     | 28    | 41615  | 1751   | 6     | 324  | User friendly Calculus in Coq    |
+| corespec       | 41    | 35694  | 1351   | 33    | 215  | Formalization of Haskell Core    |
+|                |       |        |        |       |      | in Coq                           |
+| Corn           | 348   | 156363 | 6895   | 33    | 2118 | Coq Constructive Repository at   |
+|                |       |        |        |       |      | Nijmegen (Reals)                 |
+| DeepSpecDB     | 55    | 32788  | 531    | 30    | 1151 | DeepSpec Data Base               |
+|----------------+-------+--------+--------+-------+------+----------------------------------+
+{ .booktable }
+
++----------------+-------+--------+--------+-------+------+----------------------------------+
+| Project        | #Coq  | SLOC   | Proofs | Types | Defs | Notes                            |
+|                | Files |        |        |       |      |                                  |
++:---------------+------:+-------:+-------:+------:+-----:|---{width:6cm}--------------------+
+| certikos       |       |        |        |       |      | Kit Operating System             |
+| - compcert     | 205   | 206270 | 5359   | 465   | 2945 | Modified compcert                |
+| - compcertx    | 50    | 8645   | 326    | 25    | 60   | Compcert for sep compilation     |
+| - liblayers    | 55    | 22122  | 725    | 43    | 189  |                                  |
+| - mcertikos    | 449   | 207281 | 5591   | 324   | 1757 |                                  |
+|----------------+-------+--------+--------+-------+------+----------------------------------+
+| dsss17 -total  | 490   | 302318 | 10580  | 1061  | 5162 | DeepSpec Summer School 2017      |
+| - auto         | 6     | 3495   | 148    | 16    | 23   | Proof Automation - Chlipala      |
+| - CAL          | 378   | 245501 | 8762   | 834   | 4321 | Certifying software with crashes |
+|                |       |        |        |       |      | (Cert Abstr layers)              |
+| - compiler     | 6     | 3813   | 116    | 22    | 48   | Compiler for Imp (Xaxier)        |
+| - Metalib      | 18    | 7015   | 307    | 7     | 97   | Support for Stlc                 |
+| - qc           | 9     | 5073   | 26     | 24    | 84   | QuickChick                       |
+| - SF           | 34    | 20875  | 656    | 107   | 316  | Software Foundations             |
+| - Stlc         | 12    | 8942   | 392    | 27    | 62   | Lang Spec and Variable binding   |
+| - vminus       | 27    | 7604   | 173    | 24    | 211  | Vellvm: Verifying the LLVM       |
+|----------------+-------+--------+--------+-------+------+----------------------------------+
+| dsss18 - total | 743   | 258178 | 8617   | 614   | 4399 | DeepSpec Summeer School 2018     |
+| - charIO       | 18    | 3704   | 84     | 23    | 167  |                                  |
+| - dw           | 88    | 17300  | 199    | 45    | 572  |                                  |
+| - kami         | 75    | 47358  | 1996   | 97    | 624  |                                  |
+| - lf           | 38    | 17147  | 480    | 78    | 194  | SF - Logical Foundations         |
+| - plf          | 48    | 33305  | 589    | 140   | 249  | SF - Programming Languages       |
+|                |       |        |        |       |      | Foundations                      |
+| - qc           | 10    | 6767   | 21     | 28    | 80   | Quick Chick                      |
+| - vc           | 15    | 9172   | 4915   | 174   | 1685 | Verifiable C (Proofs using VST)  |
+| - vfa          | 30    | 8680   | 205    | 28    | 168  | SF - Verified Functional         |
+|                |       |        |        |       |      | Algorithms                       |
+|----------------+-------+--------+--------+-------+------+----------------------------------+
+| fiat           | 647   | 197824 | 5623   | 76    | 4075 | Deductive Synthesis of Abstract  |
+|                |       |        |        |       |      | Data Types in a Proof Assistant  |
+| - Narcissus    | 72    | 32310  | 847    | 12    | 605  | Subset of Fiat for interface     |
+|                |       |        |        |       |      | generation                       |
+|----------------+-------+--------+--------+-------+------+----------------------------------+
+{ .booktable }
+
++----------------+-------+--------+--------+-------+------+----------------------------------+
+| Project        | #Coq  | SLOC   | Proofs | Types | Defs | Notes                            |
+|                | Files |        |        |       |      |                                  |
++:---------------+------:+-------:+-------:+------:+-----:|---{width:6cm}--------------------+
+| certikos       |       |        |        |       |      | Kit Operating System             |
+| - compcert     | 205   | 206270 | 5359   | 465   | 2945 | Modified compcert                |
+| - compcertx    | 50    | 8645   | 326    | 25    | 60   | Compcert for sep compilation     |
+| - liblayers    | 55    | 22122  | 725    | 43    | 189  |                                  |
+| - mcertikos    | 449   | 207281 | 5591   | 324   | 1757 |                                  |
+|----------------+-------+--------+--------+-------+------+----------------------------------+
+| flocq          | 40    | 67543  | 1225   | 21    | 317  | Formalization of floating point  |
+| kami           | 101   | 53910  | 1937   | 87    | 976  | Framework to Support             |
+|                |       |        |        |       |      | Implementing and Verifying       |
+|                |       |        |        |       |      | Bluespec-style Hardware          |
+|                |       |        |        |       |      | Components                       |
+| math-comp      | 92    | 111079 | 11379  | 38    | 3509 | Mathematical Components          |
+|                |       |        |        |       |      | Library                          |
+| qc             | 9     | 6239   | 21     | 28    | 79   | SF - Quick Chick 1.0             |
+| template-coq   | 72    | 11541  | 180    | 64    | 472  | Quoting library for Coq          |
+|                |       |        |        |       |      | (frontend for CertiCoq)          |
+| tlc            | 58    | 40300  | 2496   | 89    | 552  | General purpose alternate to     |
+|                |       |        |        |       |      | Coq's Standard Library           |
+| vellvm         | 55    | 24006  | 1085   | 122   | 635  | Verifying LLVM                   |
+| verified-ifc   | 58    | 31527  | 849    | 123   | 395  | A Verified Information-Flow      |
+|                |       |        |        |       |      | Architecture                     |
+| vst            | 508   | 314515 | 11812  | 481   | 7882 | Verified Software Toolchain      |
+| why2           | 98    | 40045  | 260    | 67    | 1787 | Why2 verification tool           |
+| why3 1.0       | 189   | 44304  | 968    | 365   | 1030 | Why3 verification tool           |
+|----------------+-------+--------+--------+-------+------+----------------------------------+
+{ .booktable }
+
+[BIB]
+
