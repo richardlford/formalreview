@@ -1,5 +1,5 @@
 <!--madoko
-Title       : NASA Formal Methods 2020 Conference Review
+Title       : 12th NASA Formal Methods Symposium NFM 2020 Review
 Title Note  : &date; &time;
 Author      : Richard L. Ford
 Email       : richardlford@gmail.com
@@ -134,7 +134,8 @@ Css Header  : body { text-rendering=optimizeLegibility }
 [TITLE]
 
 ~ Abstract
-This is a review of current formal methods theory, tools, projects and people.
+This is a review of papers and talks presented at the 12th NASA Formal
+Methods Symposium,NFM 2020.
 ~
 
 [TOC]
@@ -142,10 +143,6 @@ This is a review of current formal methods theory, tools, projects and people.
 
 # Introduction
 
-This document briefly summarizes current formal method groups, proof
-systems, projects and researchers. For each it gives pointers for
-further information. It is a work-in-progress and is necessarily
-incomplete.
 
 # Formal Methods Research Groups
 ## DeepSpec Project
