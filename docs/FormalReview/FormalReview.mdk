@@ -15,7 +15,18 @@ xBibliography: references.bib
 xBibliography: paper-full.bib
 xBibliography: poc.bib
 xBibliography: krml250.bib
-Bibliography: FormalReview.bib
+xBibliography: FormalReview.bib
+Bibliography: Blockchain.bib
+Bibliography: Cryptography.bib
+Bibliography: DafnyRef.bib
+Bibliography: FormalBib.bib
+Bibliography: Hardware.bib
+Bibliography: LanguageTools.bib
+Bibliography: MachineLearning.bib
+Bibliography: Mathematics.bib
+Bibliography: Networking.bib
+Bibliography: OperatingSystems.bib
+Bibliography: Security.bib
 Cite All:     true 
 Csl Style: apa
 
@@ -134,7 +145,14 @@ Css Header  : body { text-rendering=optimizeLegibility }
 [TITLE]
 
 ~ Abstract
-This is a review of current formal methods theory, tools, projects and people, but also related topics in software engineering and mathematics.
+This is a review of my research into formal methods theory, tools,
+projects and people, but also related topics in software engineering and
+mathematics. Some of this is summarized in the body of the document. But
+I have also been collecting and reviewing research papers and books on
+related topics. The references section of this document includes the
+related documents from my Zotero data-base. Some of these documents I've
+studied in detail, others I've only read the abstract and decided they
+were worth keeping for future reference.
 ~
 
 [TOC]
@@ -149,7 +167,9 @@ proof systems, projects and researchers, but it also includes some more
 general topics in software engineering and mathematics. For each it gives
 pointers for further information. The bibliography at the end includes
 some papers or topics that are not mentioned in the body of the document.
-It is a work-in-progress and is necessarily incomplete.
+It is a work-in-progress and is necessarily incomplete. Apologies to the
+many formal methods researchers and organizations that have not been
+included.
 
 # Formal Methods Research Groups
 In this section I will mention some of the research groups with which I'm most familiar. 
@@ -174,7 +194,7 @@ programming infrastructure for constructing large-scale certified
 systems software. By combining recent new advances in programming
 languages, formal semantics, certified operating systems, program
 verification, proof assistants and automation, language-based
-secrurity, and certifying compilers, we hope to attack the following
+security, and certifying compilers, we hope to attack the following
 research questions:
 
 - what system software structures can offer the best support for extensibility, security, and resilience?
@@ -305,9 +325,28 @@ theorems and inference rules without compromising its soundness."
   : [F* Tutorial](https://www.fstar-lang.org/tutorial/)
 
 ## LEAN
+"Lean is a functional programming language that makes it easy to write
+correct and maintainable code. You can also use Lean as an interactive
+theorem prover. Lean programming primarily involves defining types and
+functions. This allows your focus to remain on the problem domain and
+manipulating its data, rather than the details of programming."
+
+Lean 4 is the current version and has reached its  [3rd
+milestone](https://github.com/leanprover/lean4/releases/tag/v4.0.0-m3).
+The previous version, Lean 3, has been used to construct an
+extensive [mathematical
+library](https://leanprover-community.github.io/index.html). It will be
+ported to Lean 4.
+
+* Home and related Pages
+  : <https://leanprover.github.io/>
+  : <https://github.com/leanprover/lean4>
+  : <https://leanprover-community.github.io/index.html>
 
 * Papers
   : [A Metaprogramming Framework for Formal Verification](https://pp.ipd.kit.edu/uploads/publikationen/ebner17meta.pdf)
+  : Beyond Notations: Hygienic Macro Expansion for Theorem Proving Languages. [@ullrich_beyond_2020]
+  : Counting Immutable Beans: Reference Counting Optimized for Purely Functional Programming. [@ullrich_counting_2019]
 
 # Formal Methods Projects
 
@@ -403,7 +442,7 @@ procedures using a rich programming model and in a typeful
 manner. This limits the scalability of the proof development process,
 as users avoid developing domain-specific tactics and decision
 procedures.
-¯˘
+
 In this paper, we present VeriML---a novel language design that
 couples a type-safe effectful computational language with first-class
 support for manipulating logical terms such as propositions and
@@ -533,7 +572,7 @@ During the first year of DeepSpec we
 
 2. made progress on connecting LLVM-IR like SSA semantics with higher-level structural operational semantics 
 
-3. applied low-level language verification techniques to the problem of race detectection instrumentation"
+3. applied low-level language verification techniques to the problem of race detection instrumentation"
 
 ### Deep Spec Crypto
 * Home Page
@@ -758,6 +797,17 @@ Alphabetically by last name, then first.
 Professor Department of Computer and Information Science University of Pennsylvania.
 Author of [Software Foundations](http://www.cis.upenn.edu/~bcpierce/sf).
 
+## Gigore Rosu
+* Home Page
+  : https://cs.illinois.edu/about/people/faculty/grosu
+
+He is the inventor and a proponent of the [K
+framework](https://kframework.org/) and Matching
+Logic [@rosu_matching_2017; @chen_initial_2020; @chen_general_2020; @wang_concurrent_2021;
+@tusil_hyperproperties_2021; @lin_interactive_2021; @rosu_guarded_2017;
+@bereczky_mechanizing_2022] and also a founder of the  [Runtime
+Verification, Inc.](https://runtimeverification.com/)
+  
 ## Zhong Shao
 * Home Page 
   : <http://cs-www.cs.yale.edu/homes/shao/>

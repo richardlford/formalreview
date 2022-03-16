@@ -1,0 +1,70 @@
+
+@article{boston_veried_nodate,
+	title = {Veriﬁed Cryptographic Code for Everybody},
+	abstract = {We have completed machine-assisted proofs of two highlyoptimized cryptographic primitives, {AES}-256-{GCM} and {SHA}-384. We have veriﬁed that the implementations of these primitives, written in a mix of C and x86 assembly, are memory safe and functionally correct, by which we mean input-output equivalent to their algorithmic speciﬁcations. Our proofs were completed using {SAW}, a bounded cryptographic veriﬁcation tool which we have extended to handle embedded x86. The code we have veriﬁed comes from {AWS} {LibCrypto}. This code is identical to {BoringSSL} and very similar to {OpenSSL}, from which it ultimately derives. We believe we are the ﬁrst to formally verify these implementations, which protect the security of nearly everybody on the internet.},
+	pages = {23},
+	author = {Boston, Brett and Breese, Samuel and Dodds, Joey and Dodds, Mike and Huﬀman, Brian and Petcher, Adam and Stefanescu, Andrei},
+	langid = {english},
+	file = {Boston et al. - Veriﬁed Cryptographic Code for Everybody.pdf:/home/fordrl/Zotero/storage/8QJWCDVT/Boston et al. - Veriﬁed Cryptographic Code for Everybody.pdf:application/pdf},
+}
+
+@report{barthe_structured_2021,
+	title = {Structured Leakage and Applications to Cryptographic Constant-Time and Cost},
+	url = {http://eprint.iacr.org/2021/650},
+	abstract = {Many security properties of interest are captured by instrumented semantics that model the functional behavior and the leakage of programs. For several important properties, including cryptographic constant-time ({CCT}), leakage models are sufficiently abstract that one can define instrumented semantics for high-level and low-level programs. One important goal is then to relate leakage of source programs and leakage of their compilation---this can be used, e.g.{\textbackslash}, to prove preservation of {CCT}. To simplify this task, we put forward the idea of structured leakage. In contrast to the usual modeling of leakage as a sequence of observations, structured leakage is tightly coupled with the operational semantics of programs. This coupling greatly simplifies the definition of leakage transformers that map the leakage of source programs to leakage of their compilation and yields more precise statements about the preservation of security properties. We illustrate our methods on the Jasmin compiler and prove preservation results for two policies of interest: {CCT} and cost.},
+	number = {650},
+	author = {Barthe, Gilles and Gregoire, Benjamin and Laporte, Vincent and Priya, Swarn},
+	urldate = {2021-05-31},
+	date = {2021},
+	keywords = {Cost, Cryptographic Constant-Time, foundations, Secure Compilation},
+	file = {ePrint IACR Full Text PDF:/home/fordrl/Zotero/storage/7MY7UX5M/Barthe et al. - 2021 - Structured Leakage and Applications to Cryptograph.pdf:application/pdf;ePrint IACR Snapshot:/home/fordrl/Zotero/storage/4X9KJ394/650.html:text/html},
+}
+
+@article{hood_trusted_2016,
+	title = {Trusted, Third-Party Authenticated, Quantum Key Distribution},
+	url = {https://etd.auburn.edu//handle/10415/5373},
+	abstract = {This dissertation presents an algorithm that provides a way of establishing trust and authentication. The protocol negotiates a key using extensions to {QKD} algorithms that include non-repudiation and endpoint verification through a trusted third-party. The new algorithm proves the viability of implementing a trusted third-party in a {QKD} scheme. 
+ 
+Due to the capacity of quantum algorithms, the complexity of the new method is not meaningful to calculate using traditional big O methods. However, the Kolmogorov complexity calculation can be used to determine a form of the algorithm's complexity by measuring the operations it takes the algorithm to reach a successful state of entropy. Additional padding and negotiation with the third party yields a longer entropy calculation than {QKD}-only algorithms. 
+ 
+A reference implementation for the presented algorithm is provided. To test the reference implementation, a simulated quantum environment is created. The quantum simulation model and its correctness in implementing the newly created algorithm are validated for using standard model verification techniques. 
+ 
+Experimentation is set up as a "pass" or "fail" scenario. If any party is unable to unpad or decrypt a message, the algorithm is deemed a failure. If a party runs out of negotiated qubits, an entropy error is recorded and up to three retries are attempted. Experimentation on key sizes of at least 100 bits results in successful trusted key negotiation with 99.9999999987\% confidence. 
+ 
+The results of the experiment culminate in a new algorithm, dubbed {HHUYS}16, which can be implemented using current technology. This could particularly be useful to government systems that require a quantum network and its assets to be secured. Implementation guidance is provided in the form of a {QKD} Security Implementation Technical Guideline ({STIG}); however, {DoD} implementation requires further coordination among organizations. Further improvements and clarifications can be made with the National Institute of Standards and Technology's ({NIST}) proper identification of quantum-resistant encryption algorithms.},
+	author = {Hood, Jonathan},
+	urldate = {2021-02-16},
+	date = {2016-08-05},
+	langid = {english},
+	note = {Accepted: 2016-08-05T15:54:45Z},
+	file = {Snapshot:/home/fordrl/Zotero/storage/5RMJGYC9/5373.html:text/html;Full Text PDF:/home/fordrl/Zotero/storage/AXS5MI4Z/Hood - 2016 - Trusted, Third-Party Authenticated, Quantum Key Di.pdf:application/pdf},
+}
+
+@incollection{dougherty_tutorial-style_2021,
+	location = {Cham},
+	title = {A Tutorial-Style Introduction to {DY}*},
+	volume = {13066},
+	isbn = {978-3-030-91630-5 978-3-030-91631-2},
+	url = {https://link.springer.com/10.1007/978-3-030-91631-2_4},
+	abstract = {{DY} is a recently proposed formal veriﬁcation framework for the symbolic security analysis of cryptographic protocol code written in the F programming language. Unlike automated symbolic provers, {DY} accounts for advanced protocol features like unbounded loops and mutable recursive data structures as well as low-level implementation details like protocol state machines and message formats, which are often at the root of real-world attacks. Protocols modeled in {DY} can be executed, and hence, tested, and they can even interoperate with real-world counterparts. {DY} extends a long line of research on using dependent type systems but takes a fundamentally new approach by explicitly modeling the global trace-based semantics within the framework, hence bridging the gap between trace-based and type-based protocol analyses. With this, one can uniformly, precisely, and soundly model, for the ﬁrst time using dependent types, long-lived mutable protocol state, equational theories, ﬁne-grained dynamic corruption, and trace-based security properties like forward secrecy and post-compromise security. In this paper, we provide a tutorial-style introduction to {DY} : We illustrate how to model and prove the security of the {ISO}-{DH} protocol, a simple key exchange protocol based on Diﬃe-Hellman.},
+	pages = {77--97},
+	booktitle = {Protocols, Strands, and Logic},
+	publisher = {Springer International Publishing},
+	author = {Bhargavan, Karthikeyan and Bichhawat, Abhishek and Do, Quoc Huy and Hosseyni, Pedram and Küsters, Ralf and Schmitz, Guido and Würtele, Tim},
+	editor = {Dougherty, Daniel and Meseguer, José and Mödersheim, Sebastian Alexander and Rowe, Paul},
+	urldate = {2021-11-26},
+	date = {2021},
+	langid = {english},
+	doi = {10.1007/978-3-030-91631-2_4},
+	note = {Series Title: Lecture Notes in Computer Science},
+	file = {\\Bhargavan et al. - 2021 - A Tutorial-Style Introduction to DY*.pdf:/home/fordrl/Zotero/storage/YJE6H5AV/Bhargavan et al. - 2021 - A Tutorial-Style Introduction to DY.pdf:application/pdf},
+}
+
+@article{bhargavan_handshake_nodate,
+	title = {Handshake Privacy for {TLS} 1.3 - Technical report},
+	abstract = {{TLS} 1.3, the newest version of the Transport Layer Security ({TLS}) protocol, provides stronger authentication and confidentiality guarantees than prior {TLS} version. Despite additional encryption of handshake messages, some parts of the {TLS} 1.3 handshake, including the {ClientHello}, are still in the clear. For example, the protocol reveals the identity of the target server to network attackers, allowing the passive surveillance and active censorship of {TLS} connections. A recent privacy extension called Encrypted Client Hello ({ECH}, previously called {ESNI}) addresses this problem and offers more comprehensive handshake encryption and privacy for {TLS} 1.3. Surprisingly however, although the security of the {TLS} 1.3 handshake has been comprehensively analyzed in a variety of formal models, the privacy guarantees of handshake encryption have never been formally studied. This gap has resulted in several mis-steps: several of the initial designs for {ECH} were found to be vulnerable to passive and active network attacks.},
+	pages = {53},
+	author = {Bhargavan, Karthikeyan and Cheval, Vincent and Wood, Christopher},
+	langid = {english},
+	file = {Bhargavan et al. - Handshake Privacy for TLS 1.3 - Technical report.pdf:/home/fordrl/Zotero/storage/L8UNPFS7/Bhargavan et al. - Handshake Privacy for TLS 1.3 - Technical report.pdf:application/pdf},
+}

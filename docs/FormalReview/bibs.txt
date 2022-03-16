@@ -1,0 +1,11 @@
+Bibliography: Blockchain.bib
+Bibliography: Cryptography.bib
+Bibliography: DafnyRef.bib
+Bibliography: FormalBib.bib
+Bibliography: Hardware.bib
+Bibliography: LanguageTools.bib
+Bibliography: MachineLearning.bib
+Bibliography: Mathematics.bib
+Bibliography: Networking.bib
+Bibliography: OperatingSystems.bib
+Bibliography: Security.bib
